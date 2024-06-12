@@ -7,9 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA4C38ED2C08A9A200EA675A /* SongTextModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4C38EC2C08A9A200EA675A /* SongTextModel.swift */; };
+		FA4C38EF2C08A9CA00EA675A /* SizeRangeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4C38EE2C08A9CA00EA675A /* SizeRangeModel.swift */; };
+		FA4C38F12C08A9E300EA675A /* ActionPositionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4C38F02C08A9E300EA675A /* ActionPositionModel.swift */; };
+		FA4C38F32C08AA1900EA675A /* ActionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4C38F22C08AA1900EA675A /* ActionModel.swift */; };
+		FA4C38F52C08AA8300EA675A /* ColorRangeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4C38F42C08AA8300EA675A /* ColorRangeModel.swift */; };
+		FA4C38F72C08B0FB00EA675A /* ActionEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4C38F62C08B0FB00EA675A /* ActionEditViewController.swift */; };
+		FA4C38F92C08B15600EA675A /* LyricsEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4C38F82C08B15600EA675A /* LyricsEditViewController.swift */; };
 		FADFFA9E2BE5244F004EEE12 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADFFA9D2BE5244F004EEE12 /* AppDelegate.swift */; };
 		FADFFAA02BE5244F004EEE12 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADFFA9F2BE5244F004EEE12 /* SceneDelegate.swift */; };
-		FADFFAA22BE5244F004EEE12 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADFFAA12BE5244F004EEE12 /* ViewController.swift */; };
+		FADFFAA22BE5244F004EEE12 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADFFAA12BE5244F004EEE12 /* HomeViewController.swift */; };
 		FADFFAA52BE5244F004EEE12 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FADFFAA32BE5244F004EEE12 /* Main.storyboard */; };
 		FADFFAA72BE52450004EEE12 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FADFFAA62BE52450004EEE12 /* Assets.xcassets */; };
 		FADFFAAA2BE52450004EEE12 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FADFFAA82BE52450004EEE12 /* LaunchScreen.storyboard */; };
@@ -38,10 +45,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FA4C38EC2C08A9A200EA675A /* SongTextModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTextModel.swift; sourceTree = "<group>"; };
+		FA4C38EE2C08A9CA00EA675A /* SizeRangeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeRangeModel.swift; sourceTree = "<group>"; };
+		FA4C38F02C08A9E300EA675A /* ActionPositionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionPositionModel.swift; sourceTree = "<group>"; };
+		FA4C38F22C08AA1900EA675A /* ActionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionModel.swift; sourceTree = "<group>"; };
+		FA4C38F42C08AA8300EA675A /* ColorRangeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorRangeModel.swift; sourceTree = "<group>"; };
+		FA4C38F62C08B0FB00EA675A /* ActionEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionEditViewController.swift; sourceTree = "<group>"; };
+		FA4C38F82C08B15600EA675A /* LyricsEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricsEditViewController.swift; sourceTree = "<group>"; };
 		FADFFA9A2BE5244F004EEE12 /* SongMemoApp2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SongMemoApp2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FADFFA9D2BE5244F004EEE12 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FADFFA9F2BE5244F004EEE12 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FADFFAA12BE5244F004EEE12 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FADFFAA12BE5244F004EEE12 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		FADFFAA42BE5244F004EEE12 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FADFFAA62BE52450004EEE12 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FADFFAA92BE52450004EEE12 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -104,7 +118,9 @@
 			isa = PBXGroup;
 			children = (
 				FADFFAA32BE5244F004EEE12 /* Main.storyboard */,
-				FADFFAA12BE5244F004EEE12 /* ViewController.swift */,
+				FADFFAA12BE5244F004EEE12 /* HomeViewController.swift */,
+				FA4C38F82C08B15600EA675A /* LyricsEditViewController.swift */,
+				FA4C38F62C08B0FB00EA675A /* ActionEditViewController.swift */,
 				FADFFACE2BE52A96004EEE12 /* HomeViewTableViewCell.xib */,
 				FADFFACD2BE52A96004EEE12 /* HomeViewTableViewCell.swift */,
 				FADFFAA82BE52450004EEE12 /* LaunchScreen.storyboard */,
@@ -112,6 +128,11 @@
 				FADFFA9D2BE5244F004EEE12 /* AppDelegate.swift */,
 				FADFFAA62BE52450004EEE12 /* Assets.xcassets */,
 				FADFFAAB2BE52450004EEE12 /* Info.plist */,
+				FA4C38EC2C08A9A200EA675A /* SongTextModel.swift */,
+				FA4C38F42C08AA8300EA675A /* ColorRangeModel.swift */,
+				FA4C38EE2C08A9CA00EA675A /* SizeRangeModel.swift */,
+				FA4C38F02C08A9E300EA675A /* ActionPositionModel.swift */,
+				FA4C38F22C08AA1900EA675A /* ActionModel.swift */,
 			);
 			path = SongMemoApp2;
 			sourceTree = "<group>";
@@ -265,8 +286,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FADFFAA22BE5244F004EEE12 /* ViewController.swift in Sources */,
+				FA4C38EF2C08A9CA00EA675A /* SizeRangeModel.swift in Sources */,
+				FA4C38F12C08A9E300EA675A /* ActionPositionModel.swift in Sources */,
+				FADFFAA22BE5244F004EEE12 /* HomeViewController.swift in Sources */,
+				FA4C38F92C08B15600EA675A /* LyricsEditViewController.swift in Sources */,
+				FA4C38F32C08AA1900EA675A /* ActionModel.swift in Sources */,
+				FA4C38F72C08B0FB00EA675A /* ActionEditViewController.swift in Sources */,
 				FADFFACF2BE52A96004EEE12 /* HomeViewTableViewCell.swift in Sources */,
+				FA4C38ED2C08A9A200EA675A /* SongTextModel.swift in Sources */,
+				FA4C38F52C08AA8300EA675A /* ColorRangeModel.swift in Sources */,
 				FADFFA9E2BE5244F004EEE12 /* AppDelegate.swift in Sources */,
 				FADFFAA02BE5244F004EEE12 /* SceneDelegate.swift in Sources */,
 			);
