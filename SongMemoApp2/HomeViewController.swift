@@ -22,10 +22,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             homeTableView.dataSource = self
         }
         //接続名　クリエイトアクション　引数　は　UIButton
-        @IBAction func createAction(_ sender: UIButton) {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    @IBAction func createAction(_ sender: UIButton) {
+    let storyboard = UIStoryboard(name: "Main", bundle: nil)
             //VCとはviewControllerの略 （つまりこの定数に格納している） = インスタンス（初期化）するViewは (ActionViewController) 強制キャスト　型名（ActionViewController）
-            let actionVC = storyboard.instantiateViewController(withIdentifier: "ActionViewController") as! ActionViewController
+            let actionVC = storyboard.instantiateViewController(withIdentifier: "ActionEditViewController") as! ActionEditViewController
             //UIkitのUIViewControllerに所属するnavigationController nilのとき（navigationControllerが存在しない場合）スキップする . ビューコントローラが所属するナビゲーションコントローラ(pushされるview, アニメーション付き)
             self.navigationController?.pushViewController(actionVC, animated: true)
         }
