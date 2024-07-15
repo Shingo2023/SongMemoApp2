@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  HomeViewController.swift
 //  SongMemoApp2
 //
 //  Created by 高橋真悟 on 2024/05/03.
@@ -21,9 +21,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             //データソースプロパティをself(Viewコントローラー自身)にしている
             homeTableView.dataSource = self
         }
+        //押されたらアクションビューに画面遷移するメソッド
         //接続名　クリエイトアクション　引数　は　UIButton
     @IBAction func createAction(_ sender: UIButton) {
-    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    let storyboard = UIStoryboard(name: "ActionEditViewController", bundle: nil)
             //VCとはviewControllerの略 （つまりこの定数に格納している） = インスタンス（初期化）するViewは (ActionViewController) 強制キャスト　型名（ActionViewController）
             let actionVC = storyboard.instantiateViewController(withIdentifier: "ActionEditViewController") as! ActionEditViewController
             //UIkitのUIViewControllerに所属するnavigationController nilのとき（navigationControllerが存在しない場合）スキップする . ビューコントローラが所属するナビゲーションコントローラ(pushされるview, アニメーション付き)
