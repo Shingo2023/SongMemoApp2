@@ -21,6 +21,21 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             //データソースプロパティをself(Viewコントローラー自身)にしている
             homeTableView.dataSource = self
         }
+    
+    //リリックビューに遷移するコード　今回提供されたコード
+    // UITableViewDelegate メソッド - テーブルビューの行が選択された時に呼び出されるメソッド
+    func presentLyricsView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+           // メインストーリーボードを読み込む
+           let storyboard = UIStoryboard(name: "Main", bundle: nil)
+           // LyricsViewController をストーリーボードからインスタンス化
+           let lyricsVC = storyboard.instantiateViewController(withIdentifier: "LyricsViewController") as! LyricsViewController
+           // 選択された SongTextModel を LyricsViewController に渡す
+           lyricsVC.songTextModel = songList[indexPath.row]
+           // LyricsViewController に画面遷移する
+           self.navigationController?.pushViewController(lyricsVC, animated: true)
+       }
+    
+    
         //押されたらアクションビューに画面遷移するメソッド
         //接続名　クリエイトアクション　引数　は　UIButton
     @IBAction func createAction(_ sender: UIButton) {
