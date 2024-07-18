@@ -129,16 +129,16 @@
 				FADFFACD2BE52A96004EEE12 /* HomeViewTableViewCell.swift */,
 				FA4C38FC2C2316FF00EA675A /* LyricsViewController.storyboard */,
 				FA4C38F82C08B15600EA675A /* LyricsEditViewController.swift */,
-				FADFFAA82BE52450004EEE12 /* LaunchScreen.storyboard */,
-				FADFFA9F2BE5244F004EEE12 /* SceneDelegate.swift */,
-				FADFFA9D2BE5244F004EEE12 /* AppDelegate.swift */,
-				FADFFAA62BE52450004EEE12 /* Assets.xcassets */,
-				FADFFAAB2BE52450004EEE12 /* Info.plist */,
 				FA4C38EC2C08A9A200EA675A /* SongTextModel.swift */,
 				FA4C38F42C08AA8300EA675A /* ColorRangeModel.swift */,
 				FA4C38EE2C08A9CA00EA675A /* SizeRangeModel.swift */,
 				FA4C38F02C08A9E300EA675A /* ActionPositionModel.swift */,
 				FA4C38F22C08AA1900EA675A /* ActionModel.swift */,
+				FADFFAA82BE52450004EEE12 /* LaunchScreen.storyboard */,
+				FADFFA9F2BE5244F004EEE12 /* SceneDelegate.swift */,
+				FADFFAA62BE52450004EEE12 /* Assets.xcassets */,
+				FADFFA9D2BE5244F004EEE12 /* AppDelegate.swift */,
+				FADFFAAB2BE52450004EEE12 /* Info.plist */,
 			);
 			path = SongMemoApp2;
 			sourceTree = "<group>";
