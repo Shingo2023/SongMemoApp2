@@ -38,8 +38,8 @@ class ActionEditViewController: UIViewController,UINavigationControllerDelegate 
             //アクションを保存するメソッド
             func saveActions() {
                 // 各テキストフィールドからデータを取得し、ActionModelインスタンスを作成する
-                let action1 = ActionModel(id: UUID().uuidString, startIndex: 0, name: actionNameField1.text ?? "", mark: actionMarkField1.text ?? "")
-                let action2 = ActionModel(id: UUID().uuidString, startIndex: 0, name: actionNameField2.text ?? "", mark: actionMarkField2.text ?? "")
+                _ = ActionModel(id: UUID().uuidString, startIndex: 0, name: actionNameField1.text ?? "", mark: actionMarkField1.text ?? "")
+                _ = ActionModel(id: UUID().uuidString, startIndex: 0, name: actionNameField2.text ?? "", mark: actionMarkField2.text ?? "")
                 
 //                プリントする時に使用
 //                // 保存処理のコードをここに記述
