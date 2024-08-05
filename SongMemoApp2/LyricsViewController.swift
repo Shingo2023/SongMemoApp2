@@ -47,7 +47,7 @@ class LyricsViewController: UIViewController, UITextViewDelegate {
                 //attributed アトリビューテッド :文字列に対しての属性（色、フォント、スタイル）が設定された状態（形容詞）
                 //addAttribute アドアトリビュート　:文字列に対しての属性（色、フォント、スタイル）を追加する操作（動詞）
                 //foregroundColor　前景色（テキスト色）
-                //value: UIColor(named: colorRange.color) ?? （上記意味右に続く）UIColor.black,　colorRange.colorに対応する名前の色を取得します。もし取得できない場合はデフォルトで黒色（UIColor.black）を使用します。
+                //value: UIColor(named: colorRange.いcolor) ?? （上記意味右に続く）UIColor.black,　colorRange.colorに対応する名前の色を取得します。もし取得できない場合はデフォルトで黒色（UIColor.black）を使用します。
                 //range: NSRange(location: colorRange.startIndex, length: colorRange.endIndex - colorRange.startIndex))（上記意味右に続く）colorRangeに定義された範囲（開始インデックスから終了インデックスまで）に対して属性を設定します。
                 attributedText.addAttribute(.foregroundColor, value: UIColor(named: colorRange.color) ?? UIColor.black, range: NSRange(location: colorRange.startIndex, length: colorRange.endIndex - colorRange.startIndex))
             }
@@ -109,13 +109,22 @@ class LyricsViewController: UIViewController, UITextViewDelegate {
             let colorButton = UIBarButtonItem(title: "Color", style: .plain, target: self, action: #selector(changeTextColor))
             //アクションボタン
             let actionButton = UIBarButtonItem(title: "Action", style: .plain, target: self, action: #selector(insertActionMark))
+            //閉じるボタン
+            let deneButton = UIBarButtonItem(title: "Dene", style: .plain, target: self, action: #selector(insertDeneText))
             //スペーサー　ツールバーのボタン間にスペースを追加するためのフレキシブルなスペーサー（spacer）を作成します。これにより、ボタン間の余白が均等に広がります。
             let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-            //ツールバーに「Color」ボタン、スペーサー、「Action」ボタンを順に追加します。
-            toolbar.items = [colorButton, spacer, actionButton]
+            //ツールバーにボタンを追加
+            toolbar.items = [colorButton, spacer, actionButton, spacer, deneButton]
             //lyricsTextViewのinputAccessoryViewプロパティにツールバーを設定し、キーボードの上にツールバーが表示されるようにします。
             lyricsTextView.inputAccessoryView = toolbar
         }
+            // "Dene"ボタンが押されたときの処理
+            @objc func insertDeneText() {
+            // 現在のカーソル位置に「Dene」というテキストを挿入
+            if let selectedRange = lyricsTextView.selectedTextRange {
+            lyricsTextView.replace(selectedRange, withText: "Dene")
+        }
+    }
         //色を変更するコードをここに記述
         @objc func changeTextColor() {
             //selected　セレクテッド　選択された
