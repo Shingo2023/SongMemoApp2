@@ -7,50 +7,82 @@
 
 import Foundation
 import UIKit
+import RealmSwift
 
 class LyricsViewController: UIViewController, UITextViewDelegate {
     
     @IBOutlet weak var lyricsTextView: UITextView!
-        //　!　→ implicitly unwrapped optional :インプリシットリーアンラップトオプショナル(暗黙的にアンラップされたオプショナル) これを使用すると、通常のオプショナルのように値があるかどうかを確認せずに、直接値にアクセスできます。
-        var songTextModel: SongTextModel!
-        // テキストビューがロックされているかどうかを示すフラグ
-        var isLocked: Bool = false
+    //songTextModel: これは変数の名前です。SongTextModel 型のインスタンスを格納するために使用されます。
+    //　!　→ implicitly unwrapped optional :インプリシットリーアンラップトオプショナル(暗黙的にアンラップされたオプショナル) これを使用すると、通常のオプショナルのように値があるかどうかを確認せずに、直接値にアクセスできます。
+    //つまり、この変数はnilでないと仮定され、直接値として扱うことができますが、もしnilの場合、実行時エラーが発生します。
+    var songTextModel: SongTextModel!
+    // テキストビューがロックされているかどうかを示すフラグ
+    var isLocked: Bool = false
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        override func viewDidLoad() {
-            super.viewDidLoad()
-            
-            //lyricsTextViewのデリゲートとしてこのビューコントローラを設定
-            lyricsTextView.delegate = self
-            
-            //歌詞テキストビューを更新するカスタムメソッドを呼び出す
+        // songTextModelがnilか確認
+        //これは「オプショナルバインディング」と呼ばれる構文(if let 文とも呼ばれる)で、songTextModel が nil でない場合に、その値を使って処理を行います。
+        //songTextModel が nil でない場合、その値が新しい定数 songTextModel にバインドされ、この定数を使ってif ブロック内の処理が行われます。
+        //もし songTextModel が nil であれば、else ブロックの処理が行われます。
+        if let songTextModel = songTextModel {
+            // テキストビューの更新
             updateLyricsTextView()
-            
-            //アドカスタムボタンズトゥキーボード
-            //キーボードにカスタムボタンを追加するカスタムメソッドを呼び出す
-            addCustomButtonsToKeyboard()
-            
-            //Lockボタンをプログラム的に追加
-            setupLockButton()
+            //もし songTextModel が nil だった場合、else ブロックの処理が実行されます。
+        } else {
+            print("songTextModelがセットされていません。")
         }
         
-        func updateLyricsTextView() {
-            // 歌詞テキストを設定
-            lyricsTextView.text = songTextModel.text
-            
-            // 色とサイズの設定
-            //NSMutableAttributedString（エヌエスミュータブルアトリビューテッドストリング）を使用して、文字列の属性（色やフォントなど）を設定できるようにします。ここでは、歌詞テキストを基にattributedTextを作成しています。
-            let attributedText = NSMutableAttributedString(string: songTextModel.text)
-            
-            // 色の設定
-            //for-in文、コレクション（配列や辞書など）の各要素に対して繰り返し処理を行うために使用される
-            for colorRange in songTextModel.colorRange {
-                //attributed アトリビューテッド :文字列に対しての属性（色、フォント、スタイル）が設定された状態（形容詞）
-                //addAttribute アドアトリビュート　:文字列に対しての属性（色、フォント、スタイル）を追加する操作（動詞）
-                //foregroundColor　前景色（テキスト色）
-                //value: UIColor(named: colorRange.いcolor) ?? （上記意味右に続く）UIColor.black,　colorRange.colorに対応する名前の色を取得します。もし取得できない場合はデフォルトで黒色（UIColor.black）を使用します。
-                //range: NSRange(location: colorRange.startIndex, length: colorRange.endIndex - colorRange.startIndex))（上記意味右に続く）colorRangeに定義された範囲（開始インデックスから終了インデックスまで）に対して属性を設定します。
-                attributedText.addAttribute(.foregroundColor, value: UIColor(named: colorRange.color) ?? UIColor.black, range: NSRange(location: colorRange.startIndex, length: colorRange.endIndex - colorRange.startIndex))
-            }
+        //lyricsTextViewのデリゲートとしてこのビューコントローラを設定
+        lyricsTextView.delegate = self
+        //アドカスタムボタンズトゥキーボード
+        //キーボードにカスタムボタンを追加するカスタムメソッドを呼び出す
+        addCustomButtonsToKeyboard()
+        //Lockボタンをプログラム的に追加
+        setupLockButton()
+    }
+    
+    //アップデートリリックテキストビュー
+    func updateLyricsTextView() {
+        //guard let文　関数内で特定の条件を満たせなかった場合にその時点で関数を実行せずに終了するもの。
+        //モデルがモデルであった時
+        //else nilの時実行される
+        guard let songTextModel = songTextModel else {
+            //return 文が実行され、関数 updateLyricsTextView() は何もせずに終了します。
+            return
+        }
+        //lyricsTextView の text プロパティに、songTextModel.text の内容を設定します。これにより、lyricsTextView に歌詞のテキストが表示されます。
+        lyricsTextView.text = songTextModel.text
+        
+        //attributedText:属性文字列
+        //NSMutableAttributedString: テキストに属性（例えば色やフォントサイズ）を追加できるクラスです。
+        let attributedText = NSMutableAttributedString(string: songTextModel.text)
+        
+        //for-in 文は、Swift におけるループ処理の一種で、コレクション（配列や辞書など）やシーケンスの各要素に対して繰り返し処理を行うために使用します。これにより、コレクションの要素を一つ一つ取り出して操作することができます。
+        //songTextModel.colorRange に含まれるすべての色範囲について、attributedText に色の属性を設定します。
+        //colorRange: songTextModel.colorRange 配列の要素で、テキスト内の色付けする範囲と色を指定します。
+        //addAttribute: 指定した範囲のテキストに色の属性を追加します。
+        //UIColor(named: colorRange.color) ?? UIColor.black: colorRange.color で指定された名前の色を取得します。名前の色が存在しない場合はデフォルトで黒色（UIColor.black）を使用します。
+        //NSRange: 属性を適用する範囲を指定します。location は開始位置、length は範囲の長さ
+        for colorRange in songTextModel.colorRange {
+            attributedText.addAttribute(.foregroundColor, value: UIColor(named: colorRange.color) ?? UIColor.black, range: NSRange(location: colorRange.startIndex, length: colorRange.endIndex - colorRange.startIndex))
+        }
+        //songTextModel.sizeRangeに含まれるsizeRangeオブジェクトの各サイズ範囲に対して、指定されたフォントサイズを設定するための処理
+        //songTextModel.sizeRangeという配列やコレクションに含まれる各sizeRangeオブジェクトに対してループ処理を行っています。
+        for sizeRange in songTextModel.sizeRange {
+            //各sizeRangeのstartIndexとendIndexを使って、その範囲の長さを計算し、それが0より大きい場合はフォントサイズを20.0に、そうでない場合は14.0に設定します。
+            //この条件により、範囲が存在する場合（長さが0より大きい場合）には大きめのフォントサイズを、範囲が存在しない場合（長さが0の場合）には小さめのフォントサイズを適用します。
+            let fontSize: CGFloat = (sizeRange.endIndex - sizeRange.startIndex) > 0 ? 20.0 : 14.0
+            //attributedTextに対して、フォントサイズ属性を追加しています。
+            //NSRange(location: sizeRange.startIndex, length: sizeRange.endIndex - sizeRange.startIndex)を使って、sizeRangeのstartIndexからendIndexまでの範囲に対して、決定したフォントサイズを適用します。
+            attributedText.addAttribute(.font, value: UIFont.systemFont(ofSize: fontSize), range: NSRange(location: sizeRange.startIndex, length: sizeRange.endIndex - sizeRange.startIndex))
+        }
+        
+        lyricsTextView.attributedText = attributedText
+    }
+    
+    // 他のメソッドも必要に応じて songTextModel を Optional として扱うように修正します。
             
             // サイズの設定
             for sizeRange in songTextModel.sizeRange {
@@ -106,7 +138,7 @@ class LyricsViewController: UIViewController, UITextViewDelegate {
             //sizeToFit は、UIKitのメソッドで、ビューのサイズをそのコンテンツに基づいて自動的に調整するために使用されます。具体的には、ビューがその内部コンテンツを完全に表示できるようにサイズを変更します。
             toolbar.sizeToFit()
             //カラーボタン
-            let colorButton = UIBarButtonItem(title: "Color", style: .plain, target: self, action: #selector(changeTextColor))
+            let colorButton = UIBarButtonItem(title: "Color", style: .plain, target: , action: #selector(changeTextColor))
             //アクションボタン
             let actionButton = UIBarButtonItem(title: "Action", style: .plain, target: self, action: #selector(insertActionMark))
             //閉じるボタン
@@ -184,4 +216,5 @@ class LyricsViewController: UIViewController, UITextViewDelegate {
         func textViewDidChange(_ textView: UITextView) {
             songTextModel.text = textView.text
         }
-    }
+
+//realmの導入をしてエラーが残っているのはこのLyricsViewController.swiftのみです。LyricsViewController.swiftの書き換えだけでエラーを解消したいです。

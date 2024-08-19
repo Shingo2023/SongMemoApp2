@@ -6,11 +6,13 @@
 //
 
 import Foundation
-
-struct ActionModel {
-    var id: String
-    var startIndex: Int
-    var name: String
-    var mark: String
+import RealmSwift
+//レルムを使うクラスにはObjectというクラスを継承。そのプロパティにはイニシャライザーが必要
+@objcMembers class ActionModel: Object {
+    //レルムを使うクラスにはObjectというクラスを継承。そのプロパティにはイニシャライザーが必要
+    //UUIDデータを識別するためのもの いくつかのアクションを取り扱う上であった方がいい
+    @Persisted var id: String = UUID().uuidString
+    @Persisted var actionType: String = ""
+    @Persisted var actionValue: String = ""
 }
 

@@ -10,10 +10,16 @@ import UIKit
 
 class ActionEditViewController: UIViewController,UINavigationControllerDelegate {
     
+    
     @IBOutlet weak var actionNameField1: UITextField!
+    
     @IBOutlet weak var actionMarkField1: UITextField!
+    
     @IBOutlet weak var actionNameField2: UITextField!
+    //@IBOutlet weak var actionNameField2: UITextField!
+    
     @IBOutlet weak var actionMarkField2: UITextField!
+    //@IBOutlet weak var actionMarkField2: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,13 +32,12 @@ class ActionEditViewController: UIViewController,UINavigationControllerDelegate 
     }
     //アドカスタムツールバートゥキーボード
     func addCustomToolbarToKeyboard() {
-        // UIToolbarのインスタンスを作成
-        let toolbar = UIToolbar()
-        // コンテンツに合わせてツールバーのサイズを調整
-        toolbar.sizeToFit()
+        //ツールバーの位置
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 44))
         
         // "Done"ボタンを作成
         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneButtonTapped))
+        
         // ボタンの間にスペースを作るためのフレキシブルスペースを作成
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         
@@ -71,10 +76,11 @@ class ActionEditViewController: UIViewController,UINavigationControllerDelegate 
     // アクションを保存するメソッド
     func saveActions() {
         // 各テキストフィールドからデータを取得し、ActionModelインスタンスを作成
-        let action1 = ActionModel(id: UUID().uuidString, startIndex: 0, name: actionNameField1.text ?? "", mark: actionMarkField1.text ?? "")
-        let action2 = ActionModel(id: UUID().uuidString, startIndex: 0, name: actionNameField2.text ?? "", mark: actionMarkField2.text ?? "")
+        let action1 = ActionModel()
+        let action2 = ActionModel()
         
         // ここで作成したアクションを保存する処理を行う
         // 例えば、モデルの配列に追加する、データベースに保存するなど
     }
 }
+

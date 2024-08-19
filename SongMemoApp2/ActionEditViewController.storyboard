@@ -17,54 +17,71 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="アクション名２" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Js-qC-Xhe">
-                                <rect key="frame" x="117" y="494" width="159" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="絵文字でエクションマークを設定してください" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Al3-7u-RZb">
-                                <rect key="frame" x="94" y="304" width="205" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="8"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="絵文字でエクションマークを設定してください" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bNT-gC-5as">
-                                <rect key="frame" x="94" y="613" width="205" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="8"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ー　ー　ー　ー　ー　ー　ー　ー　ー　ー" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qyf-1j-Nb2">
-                                <rect key="frame" x="35" y="403" width="322" height="21"/>
+                                <rect key="frame" x="35" y="419" width="322" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="アクション名１" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mb5-HA-1BC">
-                                <rect key="frame" x="117" y="169" width="159" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="絵文字でアクションマークを設定して下さい" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="psk-zN-B56">
+                                <rect key="frame" x="51" y="283" width="290" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="290" id="c8O-SN-GvD"/>
+                                    <constraint firstAttribute="height" constant="34" id="vtv-Qs-UAm"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="actionNameField1" destination="3q4-RE-LMU" eventType="editingDidEnd" id="8Mv-zl-vcl"/>
-                                    <action selector="actionNameField1:" destination="3q4-RE-LMU" eventType="editingDidEnd" id="9jy-0W-5ot"/>
-                                </connections>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="アクション名１" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ogz-g2-T2W">
+                                <rect key="frame" x="117" y="149" width="159" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="159" id="j0J-Ca-6mJ"/>
+                                    <constraint firstAttribute="height" constant="60" id="lwI-On-Pks"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="アクション名2" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jnl-5u-Omr">
+                                <rect key="frame" x="117" y="543" width="159" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="159" id="62x-5x-Kfj"/>
+                                    <constraint firstAttribute="height" constant="60" id="ie2-n6-S9v"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="絵文字でアクションマークを設定して下さい" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tsp-hm-O6h">
+                                <rect key="frame" x="51" y="677" width="290" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="87i-lv-870"/>
+                                    <constraint firstAttribute="width" constant="290" id="jgL-Ma-Sae"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Jnl-5u-Omr" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="117" id="1wR-8m-yuB"/>
+                            <constraint firstItem="psk-zN-B56" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="51" id="Inq-NA-wpr"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Jnl-5u-Omr" secondAttribute="bottom" constant="215" id="OZ4-D1-IF1"/>
+                            <constraint firstItem="ogz-g2-T2W" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="117" id="RaD-vt-rMd"/>
+                            <constraint firstItem="ogz-g2-T2W" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="90" id="VjD-f2-y2S"/>
+                            <constraint firstItem="Tsp-hm-O6h" firstAttribute="top" secondItem="Jnl-5u-Omr" secondAttribute="bottom" constant="74" id="bmh-7y-elP"/>
+                            <constraint firstItem="psk-zN-B56" firstAttribute="top" secondItem="ogz-g2-T2W" secondAttribute="bottom" constant="74" id="mCn-Qn-wGe"/>
+                            <constraint firstItem="Tsp-hm-O6h" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="51" id="yE7-VA-5UC"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="actionMarkField1" destination="Al3-7u-RZb" id="Xpq-T5-GCP"/>
-                        <outlet property="actionMarkField2" destination="bNT-gC-5as" id="w9i-nf-rCx"/>
-                        <outlet property="actionNameField1" destination="mb5-HA-1BC" id="aUH-pK-bUi"/>
-                        <outlet property="actionNameField2" destination="4Js-qC-Xhe" id="PLg-VS-VA1"/>
+                        <outlet property="actionMarkField1" destination="psk-zN-B56" id="FYi-od-BnC"/>
+                        <outlet property="actionMarkField2" destination="Tsp-hm-O6h" id="cXT-DX-gt4"/>
+                        <outlet property="actionNameField1" destination="ogz-g2-T2W" id="UuA-dJ-jod"/>
+                        <outlet property="actionNameField2" destination="Jnl-5u-Omr" id="psb-RC-Kk7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="3q4-RE-LMU" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="130.53435114503816" y="-27.464788732394368"/>
         </scene>
