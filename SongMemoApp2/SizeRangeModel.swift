@@ -6,9 +6,12 @@
 //
 
 import Foundation
-
-struct SizeRangeModel {
-    var id: Int
-    var startIndex: Int
-    var endIndex: Int
+import RealmSwift
+//@objcMembersの効果 相互運用性の向上: Objective-Cコードとの連携が容易になり、個別に@objcを付与する手間が省けます。
+//レルムを使うクラスにはObjectというクラスを継承。そのプロパティにはイニシャライザーが必要
+@objcMembers class SizeRangeModel: Object {
+    //@Persisted:パシスティッド 属性により、Realmに保存されるプロパティであることが示されています。
+    @Persisted var startIndex: Int = 0
+    @Persisted var endIndex: Int = 0
+    @Persisted var size: Float = 0.0
 }

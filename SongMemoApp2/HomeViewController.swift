@@ -31,37 +31,42 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.navigationController?.pushViewController(actionVC, animated: true)
     }
     
-    //リリックビューに遷移するメソッド　今回提供されたコード
-    // UITableViewDelegate メソッド - テーブルビューの行が選択された時に呼び出されるメソッド
+    //リリックビューに遷移するメソッド
     @IBAction func createLyrics(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "LyricsViewController", bundle: nil)
         //VCとはviewControllerの略 （つまりこの定数に格納している） = インスタンス（初期化）するViewは (ActionViewController) 強制キャスト　型名（LyricsViewController）
         let lyricsVC = storyboard.instantiateViewController(withIdentifier: "LyricsViewController") as! LyricsViewController
+        //indexPathForSelectedRowは、UITableViewのプロパティで、選択された行のインデックスパス（IndexPath）を返します。これにより、アクションがトリガーされたときにテーブルビューのどの行が選択されているかを特定することができます。
         if let indexPath = homeTableView.indexPathForSelectedRow {
+            //このコードの部分は、選択された行に対応するデータをLyricsViewControllerに渡す役割を果たしています。
+            //LyricsViewControllerのインスタンス.モデル　＝ モデルのインスタンス[インデックス.row:行の要素]
                     lyricsVC.songTextModel = songList[indexPath.row]
                 }
         //UIkitのUIViewControllerに所属するnavigationController nilのとき（navigationControllerが存在しない場合）スキップする . ビューコントローラが所属するナビゲーションコントローラ(pushされるview, アニメーション付き)
         self.navigationController?.pushViewController(lyricsVC, animated: true)
        }
     
-          // データソースメソッド - テーブルビューの行数を決定するメソッド
+          // numberOfRowsInSection UITableViewのデータソースメソッド - テーブルビューの行数を決定するメソッド
           // (_ 引数ラベルの省略: 引数名, データソースプロトコルの一部 セクションのインデックス: 引数はInt型) ->　戻り値もInt型
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             //戻り値　ソングリストの数
             return songList.count
         }
-         // データソースメソッド - テーブルビューの各行に対するセルを提供するメソッド
+         // cellForRowAt UITableViewのデータソースメソッド - テーブルビューの各行に対するセルを提供するメソッド
+         //データソースメソッド リストやグリッド形式でデータを表示する際に使用されるメソッド
          // (_ 引数ラベルの省略 引数名: UITableView型, データソースプロトコルの一部  インデックスパス: インデックスパス型) 戻り値はUITableViewCell型　このUITableViewCellは存在しないが必要な記述らしい
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            //セルの再利用
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SongCell", for: indexPath)
+            //dequeueReusableCell デキューリユーザブルセル　テーブビューのメソッド　セルの再利用ができる
+            //withIdentifier: "SongCell" 作成するセルの識別子名
+            let cell = tableView.dequeueReusableCell(withIdentifier: "HomeViewTableViewCell", for: indexPath)
             //セルに曲名を設定
             cell.textLabel?.text = songList[indexPath.row].text
             //セルを返す
             return cell
         }
 
-        // UITableViewDelegate メソッド
+        // didSelectRowAt: UITableViewのデリゲートメソッド - テーブルビューの行が選択されたときに呼び出されます。これはユーザーの選択に対する応答として、特定の処理を実行するために使用されます。
+        //デリゲートメソッド　オブジェクトの動作やイベントに応答するために使用されるメソッド
         // (引数ラベル　引数名　型, プロトコル インデックスパス: インデックスパス型)
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
            

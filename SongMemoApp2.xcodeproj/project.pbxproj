@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9387586909C85D4689AEE0B6 /* Pods_SongMemoApp2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BA4EB10AD318BC790E20C0F /* Pods_SongMemoApp2.framework */; };
+		BEE60516491CA9BCCE819FB9 /* Pods_SongMemoApp2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40233C850E47283C3D9257BC /* Pods_SongMemoApp2Tests.framework */; };
+		EDB9CEF5B2CCC0ADCF7B35FC /* Pods_SongMemoApp2_SongMemoApp2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA22697073FBECAE1111A99F /* Pods_SongMemoApp2_SongMemoApp2UITests.framework */; };
 		FA4C38ED2C08A9A200EA675A /* SongTextModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4C38EC2C08A9A200EA675A /* SongTextModel.swift */; };
 		FA4C38EF2C08A9CA00EA675A /* SizeRangeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4C38EE2C08A9CA00EA675A /* SizeRangeModel.swift */; };
-		FA4C38F12C08A9E300EA675A /* ActionPositionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4C38F02C08A9E300EA675A /* ActionPositionModel.swift */; };
 		FA4C38F32C08AA1900EA675A /* ActionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4C38F22C08AA1900EA675A /* ActionModel.swift */; };
 		FA4C38F52C08AA8300EA675A /* ColorRangeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4C38F42C08AA8300EA675A /* ColorRangeModel.swift */; };
 		FA4C38F72C08B0FB00EA675A /* ActionEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4C38F62C08B0FB00EA675A /* ActionEditViewController.swift */; };
@@ -47,9 +49,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		40233C850E47283C3D9257BC /* Pods_SongMemoApp2Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SongMemoApp2Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		59CAC967B81FA63154BD2DE6 /* Pods-SongMemoApp2Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SongMemoApp2Tests.release.xcconfig"; path = "Target Support Files/Pods-SongMemoApp2Tests/Pods-SongMemoApp2Tests.release.xcconfig"; sourceTree = "<group>"; };
+		7468BC5F9BE8B04456A5201A /* Pods-SongMemoApp2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SongMemoApp2.debug.xcconfig"; path = "Target Support Files/Pods-SongMemoApp2/Pods-SongMemoApp2.debug.xcconfig"; sourceTree = "<group>"; };
+		7F9032FC86E2B60464D7A049 /* Pods-SongMemoApp2-SongMemoApp2UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SongMemoApp2-SongMemoApp2UITests.release.xcconfig"; path = "Target Support Files/Pods-SongMemoApp2-SongMemoApp2UITests/Pods-SongMemoApp2-SongMemoApp2UITests.release.xcconfig"; sourceTree = "<group>"; };
+		8BA4EB10AD318BC790E20C0F /* Pods_SongMemoApp2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SongMemoApp2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7C6B347ADD9A1746AF0DB9D /* Pods-SongMemoApp2-SongMemoApp2UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SongMemoApp2-SongMemoApp2UITests.debug.xcconfig"; path = "Target Support Files/Pods-SongMemoApp2-SongMemoApp2UITests/Pods-SongMemoApp2-SongMemoApp2UITests.debug.xcconfig"; sourceTree = "<group>"; };
+		D7B5CD44008F7102527877D9 /* Pods-SongMemoApp2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SongMemoApp2Tests.debug.xcconfig"; path = "Target Support Files/Pods-SongMemoApp2Tests/Pods-SongMemoApp2Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		EA22697073FBECAE1111A99F /* Pods_SongMemoApp2_SongMemoApp2UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SongMemoApp2_SongMemoApp2UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F68C6D11BA70367C43EA8E25 /* Pods-SongMemoApp2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SongMemoApp2.release.xcconfig"; path = "Target Support Files/Pods-SongMemoApp2/Pods-SongMemoApp2.release.xcconfig"; sourceTree = "<group>"; };
 		FA4C38EC2C08A9A200EA675A /* SongTextModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTextModel.swift; sourceTree = "<group>"; };
 		FA4C38EE2C08A9CA00EA675A /* SizeRangeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeRangeModel.swift; sourceTree = "<group>"; };
-		FA4C38F02C08A9E300EA675A /* ActionPositionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionPositionModel.swift; sourceTree = "<group>"; };
 		FA4C38F22C08AA1900EA675A /* ActionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionModel.swift; sourceTree = "<group>"; };
 		FA4C38F42C08AA8300EA675A /* ColorRangeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorRangeModel.swift; sourceTree = "<group>"; };
 		FA4C38F62C08B0FB00EA675A /* ActionEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionEditViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9387586909C85D4689AEE0B6 /* Pods_SongMemoApp2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEE60516491CA9BCCE819FB9 /* Pods_SongMemoApp2Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,12 +104,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDB9CEF5B2CCC0ADCF7B35FC /* Pods_SongMemoApp2_SongMemoApp2UITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9567B0C92C991A31DE8C36B6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8BA4EB10AD318BC790E20C0F /* Pods_SongMemoApp2.framework */,
+				EA22697073FBECAE1111A99F /* Pods_SongMemoApp2_SongMemoApp2UITests.framework */,
+				40233C850E47283C3D9257BC /* Pods_SongMemoApp2Tests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FADFFA912BE5244F004EEE12 = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +128,8 @@
 				FADFFAB32BE52450004EEE12 /* SongMemoApp2Tests */,
 				FADFFABD2BE52450004EEE12 /* SongMemoApp2UITests */,
 				FADFFA9B2BE5244F004EEE12 /* Products */,
+				FB1F5A4CD92DBED9A40BEA2D /* Pods */,
+				9567B0C92C991A31DE8C36B6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -132,7 +157,6 @@
 				FA4C38EC2C08A9A200EA675A /* SongTextModel.swift */,
 				FA4C38F42C08AA8300EA675A /* ColorRangeModel.swift */,
 				FA4C38EE2C08A9CA00EA675A /* SizeRangeModel.swift */,
-				FA4C38F02C08A9E300EA675A /* ActionPositionModel.swift */,
 				FA4C38F22C08AA1900EA675A /* ActionModel.swift */,
 				FADFFAA82BE52450004EEE12 /* LaunchScreen.storyboard */,
 				FADFFA9F2BE5244F004EEE12 /* SceneDelegate.swift */,
@@ -160,6 +184,19 @@
 			path = SongMemoApp2UITests;
 			sourceTree = "<group>";
 		};
+		FB1F5A4CD92DBED9A40BEA2D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7468BC5F9BE8B04456A5201A /* Pods-SongMemoApp2.debug.xcconfig */,
+				F68C6D11BA70367C43EA8E25 /* Pods-SongMemoApp2.release.xcconfig */,
+				C7C6B347ADD9A1746AF0DB9D /* Pods-SongMemoApp2-SongMemoApp2UITests.debug.xcconfig */,
+				7F9032FC86E2B60464D7A049 /* Pods-SongMemoApp2-SongMemoApp2UITests.release.xcconfig */,
+				D7B5CD44008F7102527877D9 /* Pods-SongMemoApp2Tests.debug.xcconfig */,
+				59CAC967B81FA63154BD2DE6 /* Pods-SongMemoApp2Tests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -167,9 +204,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FADFFAC42BE52450004EEE12 /* Build configuration list for PBXNativeTarget "SongMemoApp2" */;
 			buildPhases = (
+				9C4FAB3642C5F3EA17BE90ED /* [CP] Check Pods Manifest.lock */,
 				FADFFA962BE5244F004EEE12 /* Sources */,
 				FADFFA972BE5244F004EEE12 /* Frameworks */,
 				FADFFA982BE5244F004EEE12 /* Resources */,
+				4397DE5D7A8BA27A5E653C17 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -184,6 +223,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FADFFAC72BE52450004EEE12 /* Build configuration list for PBXNativeTarget "SongMemoApp2Tests" */;
 			buildPhases = (
+				8CB4748E4A24CB03BDCACF39 /* [CP] Check Pods Manifest.lock */,
 				FADFFAAC2BE52450004EEE12 /* Sources */,
 				FADFFAAD2BE52450004EEE12 /* Frameworks */,
 				FADFFAAE2BE52450004EEE12 /* Resources */,
@@ -202,9 +242,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FADFFACA2BE52450004EEE12 /* Build configuration list for PBXNativeTarget "SongMemoApp2UITests" */;
 			buildPhases = (
+				7D0CEF1B60B9F223AFDCDF6E /* [CP] Check Pods Manifest.lock */,
 				FADFFAB62BE52450004EEE12 /* Sources */,
 				FADFFAB72BE52450004EEE12 /* Frameworks */,
 				FADFFAB82BE52450004EEE12 /* Resources */,
+				6A215F4DC9EF63E9380421C0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -289,6 +331,109 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4397DE5D7A8BA27A5E653C17 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SongMemoApp2/Pods-SongMemoApp2-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SongMemoApp2/Pods-SongMemoApp2-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SongMemoApp2/Pods-SongMemoApp2-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6A215F4DC9EF63E9380421C0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SongMemoApp2-SongMemoApp2UITests/Pods-SongMemoApp2-SongMemoApp2UITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SongMemoApp2-SongMemoApp2UITests/Pods-SongMemoApp2-SongMemoApp2UITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SongMemoApp2-SongMemoApp2UITests/Pods-SongMemoApp2-SongMemoApp2UITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7D0CEF1B60B9F223AFDCDF6E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SongMemoApp2-SongMemoApp2UITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8CB4748E4A24CB03BDCACF39 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SongMemoApp2Tests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9C4FAB3642C5F3EA17BE90ED /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SongMemoApp2-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FADFFA962BE5244F004EEE12 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -296,7 +441,6 @@
 			files = (
 				FA4C38EF2C08A9CA00EA675A /* SizeRangeModel.swift in Sources */,
 				FA4C38FF2C4D6BAF00EA675A /* LyricsViewController.swift in Sources */,
-				FA4C38F12C08A9E300EA675A /* ActionPositionModel.swift in Sources */,
 				FADFFAA22BE5244F004EEE12 /* HomeViewController.swift in Sources */,
 				FA4C38F32C08AA1900EA675A /* ActionModel.swift in Sources */,
 				FA4C38F72C08B0FB00EA675A /* ActionEditViewController.swift in Sources */,
@@ -476,6 +620,7 @@
 		};
 		FADFFAC52BE52450004EEE12 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7468BC5F9BE8B04456A5201A /* Pods-SongMemoApp2.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -504,6 +649,7 @@
 		};
 		FADFFAC62BE52450004EEE12 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F68C6D11BA70367C43EA8E25 /* Pods-SongMemoApp2.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -532,6 +678,7 @@
 		};
 		FADFFAC82BE52450004EEE12 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D7B5CD44008F7102527877D9 /* Pods-SongMemoApp2Tests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -551,6 +698,7 @@
 		};
 		FADFFAC92BE52450004EEE12 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 59CAC967B81FA63154BD2DE6 /* Pods-SongMemoApp2Tests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -570,6 +718,7 @@
 		};
 		FADFFACB2BE52450004EEE12 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C7C6B347ADD9A1746AF0DB9D /* Pods-SongMemoApp2-SongMemoApp2UITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -587,6 +736,7 @@
 		};
 		FADFFACC2BE52450004EEE12 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F9032FC86E2B60464D7A049 /* Pods-SongMemoApp2-SongMemoApp2UITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
