@@ -14,5 +14,7 @@ import RealmSwift
     @Persisted var id: String = UUID().uuidString
     @Persisted var actionType: String = ""
     @Persisted var actionValue: String = ""
+    @Persisted var title: String = ""  // 新しいプロパティを追加
+    @Persisted var mark: String = ""   // markプロパティを追加
 }
 
