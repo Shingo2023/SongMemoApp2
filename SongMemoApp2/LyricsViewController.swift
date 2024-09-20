@@ -185,34 +185,42 @@ class LyricsViewController: UIViewController, UITextViewDelegate {
         //①.alert: 画面の中央に表示される標準的なアラートスタイル。 ②.actionSheet: 画面の下からスライドしてくるアクションシートスタイル。
         let alert = UIAlertController(title: "Select Action", message: nil, preferredStyle: .actionSheet)
         
-        //songTextModel.actions配列内の各要素actionに対してループを回します。この配列は、アクションマークやその関連情報を含むモデルのコレクション
+        //guard let これ以上処理を進めたくない場合に使う　nilだったらエラーになる
+        guard let songTextModel = songTextModel else {
+            //nilだった他場合のプリント分
+            print("songTextModelがnilです")
+            //リターンで関数を終了させている nilだった場合、ガード分を返して終了されている
+            return
+        }
+        if songTextModel.actions.isEmpty {
+            print("actionsが空です")
+            return
+        }
+        
         for action in songTextModel.actions {
-            //UIAlertActionオブジェクトを生成しています。UIAlertActionはアラートコントローラで選択可能なアクションを表します。
-            let actionItem = UIAlertAction(title: action.title, style: .default) { _ in
-                //lyricsTextViewというテキストビューの選択範囲を取得し、selectedRangeという変数に格納しています。self.lyricsTextViewは、このメソッドが属するクラスのインスタンスのプロパティを指しています。
-                let selectedRange = self.lyricsTextView.selectedRange
-                //replaceCharacters　リプレースキャラクターズ:文字を置き換える
-                //lyricsTextViewのtextStorageを操作して、selectedRangeで指定された範囲の文字列をaction.markに置き換えています。
-                self.lyricsTextView.textStorage.replaceCharacters(in: selectedRange, with: action.mark)
-                _ = ActionModel()
-                // actionPositionModelに追加
-                //songTextModelオブジェクトのactions配列に、現在選択されたactionを追加します。これにより、このアクションがアプリケーション内で記録され、後でアクセスできるようになります。
+            let actionItem = UIAlertAction(title: action, style: .default) { _ in
+                let selectedRenge = self.lyricsTextView.selectedRange
+                self.lyricsTextView.textStorage.replaceCharacters(in: selectedRenge, with: action.mark)
                 self.songTextModel.actions.append(action)
             }
             //前に作成したactionItem（UIAlertActionオブジェクト）をアラートコントローラに追加します。これにより、アクションシートにこの選択肢が表示され、ユーザーがそれを選択できるようになります。
             alert.addAction(actionItem)
         }
-        //UIAlertActionオブジェクトを作成し、アラートに追加します。
-        //title: "Cancel"は、アラートに表示されるボタンのタイトルを「Cancel」に設定します。
-        //style: .cancelは、ボタンのスタイルをキャンセル用に指定します。これにより、ボタンはキャンセルアクションとして機能します。
-        //handler: nilは、キャンセルボタンが押されたときに特に何も処理を行わないことを示します。
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        //presentメソッドを使って、alert（UIAlertControllerオブジェクト）を画面に表示します。
-        //completion　コンプリーション　:完了 nilは、アラートが表示された後に特定の処理を行わないことを意味します。
-        present(alert, animated: true, completion: nil)
     }
-    //テクストビューディドゥチェンジ
-    func textViewDidChange(_ textView: UITextView) {
+        //キャンセルボタン
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
+        
+
+        //テクストビューディドゥチェンジ（デリゲートプロパティ。テキストが変わるたびに呼び出されるもの）
+        func textViewDidChange(_ textView: UITextView) {
+        // songTextModel が nil でないか確認する
+        guard let songTextModel = songTextModel else {
+            print("songTextModelがnilです")
+            return
+        }
+        
+        // nilでない場合、songTextModelのtextプロパティにテキストビューのテキストを設定
         songTextModel.text = textView.text
     }
 }
