@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import RealmSwift
 
 class ActionEditViewController: UIViewController,UINavigationControllerDelegate {
     
@@ -52,10 +53,10 @@ class ActionEditViewController: UIViewController,UINavigationControllerDelegate 
     }
     
     // "Done"ボタンが押されたときの処理
-        @objc func doneButtonTapped() {
-            // キーボードを閉じる
-            self.view.endEditing(true)
-        }
+    @objc func doneButtonTapped() {
+        // キーボードを閉じる
+        self.view.endEditing(true)
+    }
     
     // UINavigationControllerDelegate メソッド
     //    //新しいビューコントローラがナビゲーションスタックに表示される直前に呼び出されます。
@@ -69,18 +70,51 @@ class ActionEditViewController: UIViewController,UINavigationControllerDelegate 
         //selfはActionEditViewControllerのインスタンス化
         // 他のページに遷移したときに保存処理を実行
         if viewController != self {
-            saveActions()
+            saveActions(with: action1)
+            saveActions(with: action2)
         }
     }
     
-    // アクションを保存するメソッド
-    func saveActions() {
+    //　アクションを保存するメソッド
+    func saveActions(with updatedText: String) {
         // 各テキストフィールドからデータを取得し、ActionModelインスタンスを作成
         let action1 = ActionModel()
         let action2 = ActionModel()
         
-        // ここで作成したアクションを保存する処理を行う
-        // 例えば、モデルの配列に追加する、データベースに保存するなど
+        //テキストフィールドからデータを取得
+        //if let オプショナル型の値を安全にアンラップするための構文
+        //        if let 定数名 = オプショナル値 {
+        //            // オプショナル値がnilでない場合に実行される処理
+        //        } else {
+        //            // オプショナル値がnilの場合に実行される処理（任意）
+        //        }
+        //ローカル定数actionName1 = UItextFieldとテキストプロパティ　Fieldの文字数が１より少ない
+        if let actionMark1 = actionMarkField1.text, actionMark1.count <= 1 {
+            action1.mark = actionMark1
+        } else {// 1文字より多い場合のエラー
+            print("アクションマークは1文字の絵文字である必要があります。")
+        }
+        if let actionMark2 = actionMarkField2.text, actionMark2.count <= 1 {
+            action2.mark = actionMark2
+        } else {// 1文字より多い場合のエラー
+            print("アクションマークは1文字の絵文字である必要があります。")
+        }
+        // Realmデータベースにアクションを保存
+        //　realm上にこの書き込む宣言
+        let realm = try! Realm()
+        // writeメソッドを使って書き込みトランザクションを開始
+        try! realm.write {
+            //　ブジェクト（）をrealmデータベースに保存
+            realm.add(action1)
+            realm.add(action2)
+        }
+        print("text: \(action1.mark), recordDate: \(action2.mark)")
     }
 }
 
+extension ActionEditViewController: UITextViewDelegate {
+    func textviewDidChange(_ textView: UITextView) {
+        let updatedAction = textView.text ?? ""
+        saveActions(with: updatedAction)
+    }
+}
