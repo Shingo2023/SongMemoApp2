@@ -17,4 +17,3 @@ import RealmSwift
     @Persisted var name: String = ""  // 新しいプロパティを追加
     @Persisted var mark: String = ""   // markプロパティを追加
 }
-

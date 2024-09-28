@@ -178,6 +178,7 @@ class LyricsViewController: UIViewController, UITextViewDelegate {
         }
     }
     //インサートアクションマーク
+    //アクションマークの挿入
     @objc func insertActionMark() {
         // アクションマークを挿入するコードをここに記述
         //アラート　セレクト　メッセージ　プリファードスタイル　アクションシート
@@ -196,31 +197,27 @@ class LyricsViewController: UIViewController, UITextViewDelegate {
             print("actionsが空です")
             return
         }
-        
+        //for-in文　配列やコレクションに対して順番に繰り返し処理を行う構文
+        //for action in songTextModel.actions {
+        // ここに繰り返し行う処理を記述 }
         for action in songTextModel.actions {
-            let actionItem = UIAlertAction(title: action, style: .default) { _ in
+            //定数actionItem　＝　UIAlertAction(イニシャライザ) { 無名引数ラベル
+            let actionItem = UIAlertAction(title: action.actionValue, style: .default) { _ in
+                //定数セレクトレンジ = セルフ.リリックテキストビュー.セレクトレンジ
                 let selectedRenge = self.lyricsTextView.selectedRange
+                //セルフ.リリックテキストビュー.テキストストレージ.リプレイスキャラクターズ()
                 self.lyricsTextView.textStorage.replaceCharacters(in: selectedRenge, with: action.mark)
+                //アイテム.アペンド:末尾に追加
                 self.songTextModel.actions.append(action)
             }
             //前に作成したactionItem（UIAlertActionオブジェクト）をアラートコントローラに追加します。これにより、アクションシートにこの選択肢が表示され、ユーザーがそれを選択できるようになります。
+            //add:要素に追加
             alert.addAction(actionItem)
         }
-    }
-        //キャンセルボタン
+        // キャンセルボタンを追加
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        // アラートを表示
         present(alert, animated: true, completion: nil)
-        
-
-        //テクストビューディドゥチェンジ（デリゲートプロパティ。テキストが変わるたびに呼び出されるもの）
-        func textViewDidChange(_ textView: UITextView) {
-        // songTextModel が nil でないか確認する
-        guard let songTextModel = songTextModel else {
-            print("songTextModelがnilです")
-            return
-        }
-        
-        // nilでない場合、songTextModelのtextプロパティにテキストビューのテキストを設定
-        songTextModel.text = textView.text
     }
 }
