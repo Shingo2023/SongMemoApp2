@@ -1,2 +1,2 @@
 # 概要説明
-- このRepositoryはGithub学習のために作成されました。15
+- このRepositoryはGithub学習のために作成されました。17

@@ -33,6 +33,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     //リリックビューに遷移するメソッド
     @IBAction func createLyrics(_ sender: UIButton) {
+     
         let storyboard = UIStoryboard(name: "LyricsViewController", bundle: nil)
         //VCとはviewControllerの略 （つまりこの定数に格納している） = インスタンス（初期化）するViewは (ActionViewController) 強制キャスト　型名（LyricsViewController）
         let lyricsVC = storyboard.instantiateViewController(withIdentifier: "LyricsViewController") as! LyricsViewController

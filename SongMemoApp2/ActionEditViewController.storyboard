@@ -17,73 +17,116 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ー　ー　ー　ー　ー　ー　ー　ー　ー　ー" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qyf-1j-Nb2">
-                                <rect key="frame" x="35" y="419" width="322" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qO7-Gl-hM1">
+                                <rect key="frame" x="115" y="268" width="159" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="Vqz-xi-VZ4"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="34" id="YIe-4v-Rei"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="159" id="aq4-Iu-7r1"/>
+                                    <constraint firstAttribute="width" constant="159" id="rO0-hU-54v"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="アクション名１" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a5Q-Eg-A3i">
+                                <rect key="frame" x="117" y="122" width="112" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Ngp-EP-GH0"/>
+                                    <constraint firstAttribute="width" constant="112" id="w9Y-uB-sSe"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="絵文字でアクションマークを設定して下さい" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="psk-zN-B56">
-                                <rect key="frame" x="51" y="283" width="290" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H3o-Qt-kTo">
+                                <rect key="frame" x="117" y="574" width="159" height="34"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="290" id="c8O-SN-GvD"/>
-                                    <constraint firstAttribute="height" constant="34" id="vtv-Qs-UAm"/>
+                                    <constraint firstAttribute="width" constant="159" id="LnB-gC-jcp"/>
+                                    <constraint firstAttribute="height" constant="34" id="uw2-JF-UHz"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="アクション名１" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ogz-g2-T2W">
-                                <rect key="frame" x="117" y="149" width="159" height="60"/>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Um0-nF-gYl">
+                                <rect key="frame" x="117" y="151" width="159" height="34"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="159" id="j0J-Ca-6mJ"/>
-                                    <constraint firstAttribute="height" constant="60" id="lwI-On-Pks"/>
+                                    <constraint firstAttribute="width" constant="159" id="1WI-dr-ut1"/>
+                                    <constraint firstAttribute="height" constant="34" id="zpH-rg-TST"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="アクション名2" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jnl-5u-Omr">
-                                <rect key="frame" x="117" y="543" width="159" height="60"/>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Ln-Hx-291">
+                                <rect key="frame" x="117" y="461" width="159" height="34"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="159" id="62x-5x-Kfj"/>
-                                    <constraint firstAttribute="height" constant="60" id="ie2-n6-S9v"/>
+                                    <constraint firstAttribute="width" constant="159" id="R9K-XU-exE"/>
+                                    <constraint firstAttribute="height" constant="34" id="oeA-DU-a6Q"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="絵文字でアクションマークを設定して下さい" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tsp-hm-O6h">
-                                <rect key="frame" x="51" y="677" width="290" height="34"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="アクションマーク１" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1IB-5y-chw">
+                                <rect key="frame" x="115" y="239" width="157" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="34" id="87i-lv-870"/>
-                                    <constraint firstAttribute="width" constant="290" id="jgL-Ma-Sae"/>
+                                    <constraint firstAttribute="height" constant="21" id="N5s-D5-efc"/>
+                                    <constraint firstAttribute="width" constant="157" id="pXh-cs-75V"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="アクションマーク2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="346-Yv-iQP">
+                                <rect key="frame" x="117" y="545" width="157" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="157" id="7nW-En-hs9"/>
+                                    <constraint firstAttribute="height" constant="21" id="lG3-Xa-dXk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="アクション名２" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DXd-JV-wp3">
+                                <rect key="frame" x="115" y="432" width="114" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="OrA-Z6-40U"/>
+                                    <constraint firstAttribute="width" constant="114" id="uHM-RE-Sfy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Jnl-5u-Omr" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="117" id="1wR-8m-yuB"/>
-                            <constraint firstItem="psk-zN-B56" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="51" id="Inq-NA-wpr"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Jnl-5u-Omr" secondAttribute="bottom" constant="215" id="OZ4-D1-IF1"/>
-                            <constraint firstItem="ogz-g2-T2W" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="117" id="RaD-vt-rMd"/>
-                            <constraint firstItem="ogz-g2-T2W" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="90" id="VjD-f2-y2S"/>
-                            <constraint firstItem="Tsp-hm-O6h" firstAttribute="top" secondItem="Jnl-5u-Omr" secondAttribute="bottom" constant="74" id="bmh-7y-elP"/>
-                            <constraint firstItem="psk-zN-B56" firstAttribute="top" secondItem="ogz-g2-T2W" secondAttribute="bottom" constant="74" id="mCn-Qn-wGe"/>
-                            <constraint firstItem="Tsp-hm-O6h" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="51" id="yE7-VA-5UC"/>
+                            <constraint firstItem="346-Yv-iQP" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="117" id="1aN-aY-Ruk"/>
+                            <constraint firstItem="qO7-Gl-hM1" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="topMargin" constant="209" id="1lw-wI-1Ax"/>
+                            <constraint firstItem="H3o-Qt-kTo" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="topMargin" constant="515" id="3DX-We-fVU"/>
+                            <constraint firstItem="1IB-5y-chw" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="topMargin" constant="180" id="4CW-tO-U8n"/>
+                            <constraint firstItem="DXd-JV-wp3" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="115" id="Cno-TF-e43"/>
+                            <constraint firstItem="a5Q-Eg-A3i" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="topMargin" constant="63" id="D0p-bw-wmE"/>
+                            <constraint firstItem="1IB-5y-chw" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="115" id="N6U-hc-hbX"/>
+                            <constraint firstItem="2Ln-Hx-291" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="topMargin" constant="402" id="PjH-g4-V3z"/>
+                            <constraint firstItem="2Ln-Hx-291" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="117" id="Qny-AR-mZm"/>
+                            <constraint firstItem="DXd-JV-wp3" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="topMargin" constant="373" id="QrU-xn-oGK"/>
+                            <constraint firstItem="H3o-Qt-kTo" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="117" id="agO-DJ-QiB"/>
+                            <constraint firstItem="Um0-nF-gYl" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="117" id="bcu-W0-4yw"/>
+                            <constraint firstItem="a5Q-Eg-A3i" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="117" id="ewL-Ig-Zu7"/>
+                            <constraint firstItem="Um0-nF-gYl" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="topMargin" constant="92" id="o05-Fl-d5j"/>
+                            <constraint firstItem="346-Yv-iQP" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="topMargin" constant="486" id="vW7-YQ-94P"/>
+                            <constraint firstItem="qO7-Gl-hM1" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="115" id="ylZ-cH-whS"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="actionMarkField1" destination="psk-zN-B56" id="FYi-od-BnC"/>
-                        <outlet property="actionMarkField2" destination="Tsp-hm-O6h" id="cXT-DX-gt4"/>
-                        <outlet property="actionNameField1" destination="ogz-g2-T2W" id="UuA-dJ-jod"/>
-                        <outlet property="actionNameField2" destination="Jnl-5u-Omr" id="psb-RC-Kk7"/>
+                        <outlet property="actionMarkField1" destination="qO7-Gl-hM1" id="BID-HY-S26"/>
+                        <outlet property="actionMarkField2" destination="H3o-Qt-kTo" id="Q9h-O6-dHe"/>
+                        <outlet property="actionNameField1" destination="Um0-nF-gYl" id="i5t-oZ-kXd"/>
+                        <outlet property="actionNameField2" destination="2Ln-Hx-291" id="M9t-AL-ait"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-131" y="-25"/>
+            <point key="canvasLocation" x="-132.06106870229007" y="-25.35211267605634"/>
         </scene>
     </scenes>
     <resources>
