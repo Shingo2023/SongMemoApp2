@@ -16,7 +16,6 @@ class ActionEditViewController: UIViewController,UINavigationControllerDelegate,
     @IBOutlet weak var actionNameField2: UITextField!
     @IBOutlet weak var actionMarkField2: UITextField!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,6 +31,14 @@ class ActionEditViewController: UIViewController,UINavigationControllerDelegate,
         actionMarkField1.delegate = self
         actionMarkField2.delegate = self
     }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadSavedActios() // 画面表示時にデータを読み込む
+        
+    }
+
     //アドカスタムツールバートゥキーボード
     func addCustomToolbarToKeyboard() {
         //ツールバーの設置と位置
@@ -84,10 +91,14 @@ class ActionEditViewController: UIViewController,UINavigationControllerDelegate,
         }
     }
     // キーボードが非表示になったときに呼び出されるメソッド
+    //notification には、キーボードが隠れる際の情報が含まれます。
     @objc func keyboardWillHide(_ notification: Notification) {
-        
+        //現在のビュー（画面）の位置を示すY座標です。
         if self.view.frame.origin.y != 0 {
+            //UIView.animate は、ビューの位置やサイズをアニメーション付きで変更するためのメソッドです。
+            //withDuration: 0.3 は、アニメーションの時間を指定しています。ここでは0.3秒でビューを元の位置に戻します。
             UIView.animate(withDuration: 0.3) {
+                //これは、ビュー（self.view）のY座標を0に設定しています。
                 self.view.frame.origin.y = 0
             }
         }
@@ -102,8 +113,11 @@ class ActionEditViewController: UIViewController,UINavigationControllerDelegate,
     
     //validate -ヴァリデイト :検証
     func validateActionMarks() -> Bool {
+        
+        
         // guard let：条件を満たさない場合に、必ず else ブロックで早期に処理を中断します。条件を満たす場合は、そのまま後の処理が続行されます。
         // actionMark1 が nil または 1文字でない場合に false を返す
+        
         guard let actionMark1 = actionMarkField1.text, actionMark1.count == 1 else {
             return false
         }
@@ -111,7 +125,7 @@ class ActionEditViewController: UIViewController,UINavigationControllerDelegate,
         return true
     }
     func validateActionMarks2() -> Bool {
-        guard let actionMark1 = actionMarkField2.text, actionMark1.count == 1 else {
+        guard let actionMark2 = actionMarkField2.text, actionMark2.count == 1 else {
             return false
         }
         return true
@@ -139,14 +153,16 @@ class ActionEditViewController: UIViewController,UINavigationControllerDelegate,
             }
         }
     }
+    //アクション保存
     func saveAction() {
         // if文　条件がtureの場合に括弧内を実行
-        //バリデイトアクションマーク
+        // 関数バリデイトアクションマーク && 関数バリデイトアクションマーク2
         if validateActionMarks() && validateActionMarks2() {
             //ローカル定数action1 = ActionModel() :アクションモデルクラスのインスタンスオブジェクト
             let action1 = ActionModel()
             let action2 = ActionModel()
             //! 強制アンラップ
+            //action1 というオブジェクトの mark プロパティに、actionMarkField1 というテキストフィールドの内容（text プロパティ）を代入しています。
             action1.mark = actionMarkField1.text!
             action2.mark = actionMarkField2.text!
             
@@ -156,21 +172,44 @@ class ActionEditViewController: UIViewController,UINavigationControllerDelegate,
                 realm.add(action2)
             }
             print("保存されたアクション: mark1: \(action1.mark), mark2: \(action2.mark)")
+            
         }
     }
+    //アクションデータ読み込み
+    func loadSavedActios() {
+        let realm = try! Realm()
+        let savedActions = realm.objects(ActionModel.self)
+        
+        if let firstAction = savedActions.first {
+            actionMarkField1.text = firstAction.mark
+        }
+        if let lastAction = savedActions.last {
+            actionMarkField2.text = lastAction.mark
+        }
+    }
+    
+    
 }
 extension UIView {
+    //ファインド（:見つける）ファーストレスポンダー
     // ビュー階層の中でファーストレスポンダーを探すメソッド
+    //この関数はUIViewオブジェクト（ファーストレスポンダー）を返します。ファーストレスポンダーが見つからなかった場合はnilを返します。
     func findFirstResponder() -> UIView? {
+        // if文　条件がtureの場合に括弧内を実行
+        //selfはこのメソッドを呼び出しているビュー
+        //このビューがファーストレスポンダーであれば、trueを返します。もしこのビュー自体がファーストレスポンダーなら、そのビュー自身 (self) を返します。
         if self.isFirstResponder {
             return self
         }
+        //self.subviews：このビュー (self) に追加されているすべてのサブビュー（子ビュー）の配列です。この部分では、各サブビューに対して再帰的にfindFirstResponder()を呼び出しています。
+        //再帰的な検索：このループは、各サブビューについてfindFirstResponder()を実行します。もしサブビューの中にファーストレスポンダーが見つかれば、それを返します。
         for subview in self.subviews {
+            //if let文 :nilかもしれない値を安全に取り出す構文
             if let firstResponder = subview.findFirstResponder() {
+                //nilだったら安全にfirstResponderがリターンされる
                 return firstResponder
             }
         }
         return nil
     }
 }
-
