@@ -141,9 +141,13 @@ class ActionEditViewController: UIViewController,UINavigationControllerDelegate,
         // viewController　UIViewControllerクラスのインスタンス、つまり現在表示されているビューコントローラ
         // !否定論
         // self self は、現在のインスタンス自身を指すものです。クラスや構造体の内部で、そのインスタンス（オブジェクト）自身にアクセスする際に使用します
+        // つまり、viewcontrollerのデリデートが働いた(アクションがviewに入力された)ときに以下が実行される
         if viewController != self {
             //!:論理否定　ヴァリデイト（:検証）アクションマーク
-            if !validateActionMarks() && !validateActionMarks2() {
+            //if validateActionMarks() && validateActionMarks2() seveActionを呼びだす仕様にする前のコード
+            if validateActionMarks() && validateActionMarks2() {
+                saveAction() // 検証が成功したらsaveAction()を呼び出して保存
+            } else {
                 let alert = UIAlertController(title: "エラー", message: "アクションマークは1文字である必要があります。", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default))
                 //presentメソッド。アラートはアニメーションありで画面遷移する
