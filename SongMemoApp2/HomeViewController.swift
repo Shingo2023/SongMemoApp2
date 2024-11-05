@@ -20,7 +20,19 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             homeTableView.delegate = self
             //データソースプロパティをself(Viewコントローラー自身)にしている
             homeTableView.dataSource = self
+            // エラーメッセージ通知を監視
+            NotificationCenter.default.addObserver(self, selector: #selector(showErrorMessage(_:)), name: Notification.Name("ActionEditErrorNotification"), object: nil)
         }
+    
+    // エラーメッセージを表示する関数
+    @objc func showErrorMessage(_ notification: Notification) {
+        if let errorMessage = notification.userInfo?["message"] as? String {
+            let alert = UIAlertController(title: "エラー", message: errorMessage, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
     //アクションビューに画面遷移するメソッド
     //接続名　クリエイトアクション　引数　は　UIButton
     @IBAction func createAction(_ sender: UIButton) {
