@@ -41,9 +41,9 @@ class ActionEditViewController: UIViewController,UINavigationControllerDelegate,
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        loadSavedActios() // 画面表示時にデータを読み込む
+        loadSavedActions() // 画面表示時にデータを読み込む
     }
-
+    
     //アドカスタムツールバートゥキーボード
     func addCustomToolbarToKeyboard() {
         //ツールバーの設置と位置
@@ -57,6 +57,7 @@ class ActionEditViewController: UIViewController,UINavigationControllerDelegate,
         toolbar.setItems([spacer, doneButton], animated: true)
         
         // 各テキストフィールドにツールバーを設定
+        //UITextField に関連付けられた入力補助ビューを設定するプロパティです。このプロパティを使用することで、キーボードの上に表示されるカスタムビューを指定できます。通常は、ボタンやツールバーを表示して、ユーザーがテキストフィールドに入力する際に便利な操作を提供するために使用されます。
         actionNameField1.inputAccessoryView = toolbar
         actionMarkField1.inputAccessoryView = toolbar
         actionNameField2.inputAccessoryView = toolbar
@@ -113,14 +114,14 @@ class ActionEditViewController: UIViewController,UINavigationControllerDelegate,
     // replacementString リプレイスメントストリング　textField(_:shouldChangeCharactersIn:replacementString:) に渡されるパラメータの一つで、新しく入力された文字列を表します。このメソッドは、ユーザーがテキストフィールドに文字を入力する、または削除しようとするたびに呼ばれ、その際に入力や削除が許可されるかどうかを制御できます。
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         // フィールドがアクション名の場合、10文字以内に制限
-        // if文　条件{trueのとき実行}
+        // if let 文　textField.text が nil でない場合に text にその値が代入され、かつ条件も満たす場合に処理を実行することができます。
         // || どちらかが満たされている場合に処理を実行したいときに使います。
         if (textField == actionNameField1 || textField == actionNameField2),
            let text = textField.text,
            // text を Objective-C の NSString 型に変換し、ユーザーが入力した range の範囲に string を差し替えた新しい文字列を作ります。
            // replacingCharacters リプレイシングキャラクターズ 特定の位置の文字を新しい文字列に置き換えたいときに使用します。このメソッドは NSString 型で利用されるメソッドです
-           // 新しい文字列の 文字数が10を超えるかを確認します。10を超える場合は、この条件が true になります。
-           (text as NSString).replacingCharacters(in: range, with: string).count > 10 {
+            // 新しい文字列の 文字数が10を超えるかを確認します。10を超える場合は、この条件が true になります。
+            (text as NSString).replacingCharacters(in: range, with: string).count > 10 {
             return false
         }
         return true
@@ -142,7 +143,7 @@ class ActionEditViewController: UIViewController,UINavigationControllerDelegate,
     }
     
     //validate -ヴァリデイト :検証
-    func validateActionMarks() -> Bool {
+    func validateActionMarks1() -> Bool {
         // guard let：条件を満たさない場合に、必ず else ブロックで早期に処理を中断します。条件を満たす場合は、そのまま後の処理が続行されます。
         // actionMark1 が nil または 1文字でない場合に false を返す
         guard let actionMark1 = actionMarkField1.text, actionMark1.count == 1 else {
@@ -157,8 +158,9 @@ class ActionEditViewController: UIViewController,UINavigationControllerDelegate,
         }
         return true
     }
+    //戻るボタを押した際に、アクションマークの検証を行い、条件を満たす場合はsaveAction()を実行。満たさない場合はUIAlertを表示して前の画面に戻る処理を行う」というもの。
+    //このメソッド名はUINavigationControllerDelegate プロトコルの一部であり、Appleのフレームワークによって定義されています。そのため、このメソッドのシグネチャを変更することはできず、必ず正確にこの名前とパラメータを使用する必要があります。
     // navigationController(_:willShow:animated:) は　UINavigationControllerDelegate メソッド
-    // 新しいビューコントローラがナビゲーションスタックに表示される直前に呼び出されます。
     // navigationController: このデリゲートメソッドを呼び出している。
     // viewController: ナビゲーションコントローラによって表示されようとしているビューコントローラ。
     // animated: アニメーションが使用されるかどうかを示すブール値。
@@ -172,7 +174,7 @@ class ActionEditViewController: UIViewController,UINavigationControllerDelegate,
         if viewController != self {
             //!:論理否定　ヴァリデイト（:検証）アクションマーク
             //if validateActionMarks() && validateActionMarks2() seveActionを呼びだす仕様にする前のコード
-            if validateActionMarks() && validateActionMarks2() {
+            if validateActionMarks1() && validateActionMarks2() {
                 saveAction()// 検証が成功したらsaveAction()を呼び出して保存
                 print("只今navigationControllerにあるアクションマークはsaveActionを呼び出そうとしています")
             } else {
@@ -187,32 +189,46 @@ class ActionEditViewController: UIViewController,UINavigationControllerDelegate,
     }
     //アクション保存
     func saveAction() {
-        // if文　条件がtureの場合に括弧内を実行
+        // if文　条件がtureの場合に括弧内を実行 安全に実行
         // 関数バリデイトアクションマーク && 関数バリデイトアクションマーク2
-        if validateActionNames1() && validateActionNames2() && validateActionMarks() && validateActionMarks2(){
-            //ローカル定数action1 = ActionModel() :アクションモデルクラスのインスタンスオブジェクト
+        if validateActionNames1() && validateActionNames2() && validateActionMarks1() && validateActionMarks2(){
+            //ローカル定数action1 = ActionModel() :アクションモデルクラスのインスタンスオブジェクト　上記の名前とマークを一体でActionModelに保存
             let action1 = ActionModel()
             let action2 = ActionModel()
+            //上記にモデルを書いたのでイニシャライザーを定義
             action1.name = actionNameField1.text ?? ""
             action1.mark = actionMarkField1.text ?? ""
             action2.name = actionNameField2.text ?? ""
             action2.mark = actionMarkField2.text ?? ""
             
+            //レルムの呼び出し
             let realm = try! Realm()
+            //レルムに書き込み
             try! realm.write {
+                //上記で定義したローカル定数をレルムに書き込み
                 realm.add(action1)
                 realm.add(action2)
             }
-            //上記の処理ができたときにprintして確認している
-            print("保存されたアクション: mark1: \(action1.mark), name1: \(action1.name), mark2: \(action2.mark), name2: \(action2.name)")
-            
+
+            // SongTextModel のインスタンスを取得
+            if let songTextModel = realm.objects(SongTextModel.self).first {
+                // songTextModelのactionsプロパティにアクションとして追加
+                try! realm.write {
+                    songTextModel.actions.append(action1)
+                    songTextModel.actions.append(action2)
+                }
+                //上記の処理ができたときにprintして確認している
+                print("保存されたアクション: mark1: \(action1.mark), name1: \(action1.name), mark2: \(action2.mark), name2: \(action2.name)")
+            }
         }
     }
+    
     //アクションデータ読み込み
-    func loadSavedActios() {
+    func loadSavedActions() {
         let realm = try! Realm()
+        //realm.objects　読み込む際に必要なrealmメソッド
         let savedActions = realm.objects(ActionModel.self)
-        
+        // if let 文　条件式(nilでない場合)else{nilの場合}
         if let firstAction = savedActions.first {
             actionNameField1.text = firstAction.name
             actionMarkField1.text = firstAction.mark
@@ -224,7 +240,7 @@ class ActionEditViewController: UIViewController,UINavigationControllerDelegate,
     }
     // カスタムバックボタンが押された時の処理
     @objc func backButtonTapped() {
-        if validateActionMarks() && validateActionMarks2() {
+        if validateActionMarks1() && validateActionMarks2() {
             saveAction()
         } else {
             // バリデーションに失敗した場合に通知を送信
