@@ -179,45 +179,15 @@ class LyricsViewController: UIViewController, UITextViewDelegate {
     }
     //インサートアクションマーク
     //アクションマークの挿入
-    @objc func insertActionMark() {
-        // アクションマークを挿入するコードをここに記述
-        //アラート　セレクト　メッセージ　プリファードスタイル　アクションシート
-        //UIAlertControllerでは、preferredStyleには以下の2つのスタイルがあります
-        //①.alert: 画面の中央に表示される標準的なアラートスタイル。 ②.actionSheet: 画面の下からスライドしてくるアクションシートスタイル。
-        let alert = UIAlertController(title: "Select Action", message: nil, preferredStyle: .actionSheet)
+    @objc func insertActionMark1() {
+        // if let文 オプショナル型から値を安全に取り出すために使用される構文です。これにより、オプショナルの値が存在するときだけ処理を進めることができます。                                条件式:オプショナル値 { 値がある場合 } else { nilの場合 }
+        if let actionMark1 = songTextModel.first {
+            print("アクションマーク1: \(actionMark1)")
+        }
+        //ツールバーのアクションボタンを呼び出す
+        toolbarItems.action
+        //インサートアクションを挿入する場合はアクションレンジに挿入
+        let selectedRange = lyricsTextView.selectedRange
         
-        //guard let これ以上処理を進めたくない場合に使う　nilだったらエラーになる
-        guard let songTextModel = songTextModel else {
-            //nilだった他場合のプリント分
-            print("songTextModelがnilです")
-            //リターンで関数を終了させている nilだった場合、ガード分を返して終了されている
-            return
-        }
-        if songTextModel.actions.isEmpty {
-            print("actionsが空です")
-            return
-        }
-        //for-in文　配列やコレクションに対して順番に繰り返し処理を行う構文
-        //for action in songTextModel.actions {
-        // ここに繰り返し行う処理を記述 }
-        for action in songTextModel.actions {
-            //定数actionItem　＝　UIAlertAction(イニシャライザ) { 無名引数ラベル
-            let actionItem = UIAlertAction(title: action.actionValue, style: .default) { _ in
-                //定数セレクトレンジ = セルフ.リリックテキストビュー.セレクトレンジ
-                let selectedRenge = self.lyricsTextView.selectedRange
-                //セルフ.リリックテキストビュー.テキストストレージ.リプレイスキャラクターズ()
-                self.lyricsTextView.textStorage.replaceCharacters(in: selectedRenge, with: action.mark)
-                //アイテム.アペンド:末尾に追加
-                self.songTextModel.actions.append(action)
-            }
-            //前に作成したactionItem（UIAlertActionオブジェクト）をアラートコントローラに追加します。これにより、アクションシートにこの選択肢が表示され、ユーザーがそれを選択できるようになります。
-            //add:要素に追加
-            alert.addAction(actionItem)
-        }
-        // キャンセルボタンを追加
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
-        // アラートを表示
-        present(alert, animated: true, completion: nil)
     }
 }
