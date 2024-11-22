@@ -139,7 +139,7 @@ class LyricsViewController: UIViewController, UITextViewDelegate {
         //カラーボタン
         let colorButton = UIBarButtonItem(title: "Color", style: .plain, target: self, action: #selector(changeTextColor))
         //アクションボタン
-        let actionButton = UIBarButtonItem(title: "Action", style: .plain, target: self, action: #selector(insertActionMark))
+        let actionButton = UIBarButtonItem(title: "Action", style: .plain, target: self, action: #selector(insertActionMark1))
         //閉じるボタン
         let deneButton = UIBarButtonItem(title: "Dene", style: .plain, target: self, action: #selector(insertDeneText))
         //スペーサー　ツールバーのボタン間にスペースを追加するためのフレキシブルなスペーサー（spacer）を作成します。これにより、ボタン間の余白が均等に広がります。
@@ -177,17 +177,30 @@ class LyricsViewController: UIViewController, UITextViewDelegate {
             songTextModel.colorRange.append(colorRange)
         }
     }
-    //インサートアクションマーク
-    //アクションマークの挿入
+    // インサートアクションマーク
+    // アクションマークの挿入
     @objc func insertActionMark1() {
-        // if let文 オプショナル型から値を安全に取り出すために使用される構文です。これにより、オプショナルの値が存在するときだけ処理を進めることができます。                                条件式:オプショナル値 { 値がある場合 } else { nilの場合 }
-        if let actionMark1 = songTextModel.first {
-            print("アクションマーク1: \(actionMark1)")
+        // if let文 オプショナル型から値を安全に取り出すために使用される構文です。これにより、オプショナルの値が存在するときだけ処理を進めることができます。
+        // 条件式:オプショナル値 { 値がある場合 } else { nilの場合 }
+        if let archivedActionMark1 = songTextModel.actions.first {
+            //toolbarItems: これは、UIBarButtonItem 型の配列です。ツールバーに配置されているボタンのリストが入っています。
+            //?.: オプショナルバインディング演算子です。toolbarItems が nil でない場合に次の処理を実行します。
+            //first(where:): 配列から条件に合った最初の要素を探すメソッドです。ここでは、配列内の最初のボタンを見つけるために使っています。
+            //{ $0.action == #selector(insertActionMark1) }: このクロージャ（匿名関数）では、各ボタンが持っている action プロパティが #selector(insertActionMark1) に一致するかをチェックしています。$0 は配列内の現在のボタン（UIBarButtonItem）を指します。
+            //#selector(insertActionMark1): ここでは、insertActionMark1 メソッドをセレクタ（呼び出すメソッドの識別子）として指定しています。
+            if let actionButton = toolbarItems?.first(where: { $0.action == #selector(insertActionMark1) }) {
+            // actionButtonのaction プロパティを呼び出し
+            actionButton.action?()
+            }
+            // インサートアクションを挿入する場合は選択範囲に挿入
+            let selectedRange = lyricsTextView.selectedRange
+            
+            // アクションマーク1を挿入
+            //insertText(_:) メソッドは、テキストを現在のカーソル位置に挿入します。例えば、ユーザーが UITextView に入力している最中に、このメソッドを使うことで、カーソルの位置に文字を追加できます。
+            lyricsTextView.insertText(archivedActionMark1)
+            
+            //保存されたアクションマークを確認、print
+            print("アクションマーク1: \(archivedActionMark1)")
         }
-        //ツールバーのアクションボタンを呼び出す
-        toolbarItems.action
-        //インサートアクションを挿入する場合はアクションレンジに挿入
-        let selectedRange = lyricsTextView.selectedRange
-        
     }
 }
