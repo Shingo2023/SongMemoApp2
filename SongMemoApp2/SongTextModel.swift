@@ -13,7 +13,7 @@ import RealmSwift
 //レルムを使うクラスにはObjectというクラスを継承。そのプロパティにはイニシャライザーが必要
 class SongTextModel: Object {
     
-    @Persisted var id: String = UUID().uuidString
+    @Persisted(primaryKey: true) var id: String = UUID().uuidString
     
     @Persisted var text: String = ""
     //colorRangeは、歌詞の一部に適用される色範囲を保持するためのリストです。
