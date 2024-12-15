@@ -209,8 +209,8 @@ class ActionEditViewController: UIViewController,UINavigationControllerDelegate,
                 realm.add(action1)
                 realm.add(action2)
             }
-
-            // SongTextModel のインスタンスを取得
+            //if let 安全にアンラップする構文　{ nilではない } else { nilの場合 }// if let文 オプショナル型から値を安全に取り出すために使用される構文です。これにより、オプショナルの値が存在するときだけ処理を進めることができます。
+            // SongTextModel（クラス？） のインスタンスを取得
             if let songTextModel = realm.objects(SongTextModel.self).first {
                 // songTextModelのactionsプロパティにアクションとして追加
                 try! realm.write {
@@ -224,10 +224,10 @@ class ActionEditViewController: UIViewController,UINavigationControllerDelegate,
     }
     
     //アクションデータ読み込み
-    
     func loadSavedActions() {
         let realm = try! Realm()
         //realm.objects　読み込む際に必要なrealmメソッド
+        //ActionModel　クラスを取得。アクション１をアクションモデルに保存するから
         let savedActions = realm.objects(ActionModel.self)
         // if let 文　条件式(nilでない場合)else{nilの場合}
         if let firstAction = savedActions.first {
