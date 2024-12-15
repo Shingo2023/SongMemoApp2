@@ -183,30 +183,63 @@ class LyricsViewController: UIViewController, UITextViewDelegate {
             songTextModel.colorRange.append(colorRange)
         }
     }
+    //アクションからnilを取り除くメソッド
     @objc func insertActionMark1() {
-        //songTextModelからnilを省く工程
-        // guard let オプショナル値が nil でないことを確認し、その後にアンラップされた値を使用できるようにします。
+        
+        //realmのアクションを受け取る
+        let realm = try! Realm()
+        
+        // SongTextModel のデータを取得
+        let savedActions = realm.objects(SongTextModel.self)
+        
+        //ソングテキストモデルがnilかどうか
         guard let songTextModel = songTextModel else {
             //else{nilだった時の処理}
             print("エラー: songTextModel が nil です。")
             return
         }
-        
-        // actions 配列が空でないか確認する工程
-        //! 論理否定演算
-        // isEmpty イズ・エンプティ :空　.isEmptyこのプロパティは、「配列actionsが空であるかどうか」を判定します。true：配列が空の場合。false：配列に要素が含まれている場合。
+        //actions 配列が空でないことを確認して、空の場合に早期リターンしています。
+        //guard文　条件が 満たされていない場合に早期に処理を抜けるために使います。
+        //isEmpty イエス・エンプティ 空かどうかをチェックするプロパティです。
+        //!songTextModel.actions.isEmpty 配列が空ではない
         guard !songTextModel.actions.isEmpty else {
+            //配列が空
             print("エラー: actions 配列が空です。")
             return
         }
-        
-        // `Actionmark` を安全にアンラップする工程
+        //アーカイブヴド　:アーカイブされた
+        //first? 配列の最初の要素を取り出すことができます。要素がない場合は、nil を返します。
         if let archivedActionMark1 = songTextModel.actions.first?.mark {
             // 挿入処理
+            // insertText(): このメソッドは、指定されたテキスト（引数として渡された文字列）を現在のカーソル位置に挿入します。テキストビューの内容を変更します。
             lyricsTextView.insertText(archivedActionMark1)
             print("アクションマーク1: \(archivedActionMark1)")
         } else {
             print("エラー: 最初のアクションに mark が設定されていません。")
+        }
+    }
+    //その後呼び出しする？
+    func loadinsertActionMark1() {
+        //再びrealmで呼び出し
+        let realm = try! Realm()
+        
+        // SongTextModel のデータを取得
+        let savedActions = realm.objects(SongTextModel.self)
+        
+        // 最初のアクションが存在する場合に処理
+        if let firstAction = savedActions.first?.actions.first {
+            print("最初のアクション名: \(firstAction.name)")
+            print("最初のアクションマーク: \(firstAction.mark)")
+        } else {
+            print("エラー: アクションが見つかりませんでした。")
+        }
+        
+        // 最後のアクションが存在する場合に処理
+        if let lastAction = savedActions.first?.actions.last {
+            print("最後のアクション名: \(lastAction.name)")
+            print("最後のアクションマーク: \(lastAction.mark)")
+        } else {
+            print("エラー: アクションが見つかりませんでした。")
         }
     }
 }

@@ -1,2 +1,2 @@
 s# 概要説明
-- このRepositoryはGithub学習のために作成されました。21
+- このRepositoryはGithub学習のために作成されました。22

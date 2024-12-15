@@ -224,6 +224,7 @@ class ActionEditViewController: UIViewController,UINavigationControllerDelegate,
     }
     
     //アクションデータ読み込み
+    
     func loadSavedActions() {
         let realm = try! Realm()
         //realm.objects　読み込む際に必要なrealmメソッド
