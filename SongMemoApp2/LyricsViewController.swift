@@ -190,7 +190,7 @@ class LyricsViewController: UIViewController, UITextViewDelegate {
         //realmのアクションを受け取る
         let realm = try! Realm()
         
-        //このインスタンスしたモデル使えてる？//
+        //このインスタンスしたモデル使えてる？
         // savedActions　は　realmを返して抽出したSongTextModel(モデル名)
         let savedActions = realm.objects(SongTextModel.self)
         
