@@ -39,9 +39,11 @@ class ActionEditViewController: UIViewController,UINavigationControllerDelegate,
         actionMarkField2.delegate = self
         
     }
+    //このメソッドは、ビューが画面に表示される直前に呼び出されます。
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        loadSavedActions() // 画面表示時にデータを読み込む
+        //loadSavedActions() // 画面表示時にデータを読み込む
+        loadSavedActions()
     }
     
     //アドカスタムツールバートゥキーボード
@@ -176,7 +178,6 @@ class ActionEditViewController: UIViewController,UINavigationControllerDelegate,
             //if validateActionMarks() && validateActionMarks2() seveActionを呼びだす仕様にする前のコード
             if validateActionMarks1() && validateActionMarks2() {
                 saveAction()// 検証が成功したらsaveAction()を呼び出して保存
-                print("只今navigationControllerにあるアクションマークはsaveActionを呼び出そうとしています")
             } else {
                 let alert = UIAlertController(title: "エラー", message: "アクションマークは1文字である必要があります。", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default))
@@ -191,7 +192,7 @@ class ActionEditViewController: UIViewController,UINavigationControllerDelegate,
     func saveAction() {
         // if文　条件がtureの場合に括弧内を実行 安全に実行
         // 関数バリデイトアクションマーク && 関数バリデイトアクションマーク2
-        if validateActionNames1() && validateActionNames2() && validateActionMarks1() && validateActionMarks2(){
+        if validateActionNames1() && validateActionMarks1() && validateActionNames2() && validateActionMarks2(){
             //ローカル定数action1 = ActionModel() :アクションモデルクラスのインスタンスオブジェクト　上記の名前とマークを一体でActionModelに保存
             let action1 = ActionModel()
             let action2 = ActionModel()
@@ -200,8 +201,7 @@ class ActionEditViewController: UIViewController,UINavigationControllerDelegate,
             action1.mark = actionMarkField1.text ?? ""
             action2.name = actionNameField2.text ?? ""
             action2.mark = actionMarkField2.text ?? ""
-            
-            //レルムの呼び出し
+            //レルムのインスタンス化
             let realm = try! Realm()
             //レルムに書き込み
             try! realm.write {
@@ -209,34 +209,49 @@ class ActionEditViewController: UIViewController,UINavigationControllerDelegate,
                 realm.add(action1)
                 realm.add(action2)
             }
-
-            // SongTextModel のインスタンスを取得
-            if let songTextModel = realm.objects(SongTextModel.self).first {
-                // songTextModelのactionsプロパティにアクションとして追加
+            //ActionModel のみを保存すると、どの曲（または歌詞）に関連付けられているかがわかりません。
+            //SongTextModel の actions プロパティにアクションを追加することで、曲に関連付けられたアクションを管理します。
+            // SongTextModel（クラス？） のインスタンスを取得
+            var songTextModel: SongTextModel
+            //if let 安全にアンラップする構文 { nilではない } else { nilの場合 } :オプショナル型から値を安全に取り出すために使用される構文です。
+            //existing エグジスティング：「存在している」「既存の」という意味。
+            if let existngSongTextModel = realm.objects(SongTextModel.self).first {
+                songTextModel = existngSongTextModel
+            } else {
+                // nilの場合　つまり、SongTextModel が存在しない場合に新しく作成して保存
+                songTextModel = SongTextModel()
                 try! realm.write {
-                    songTextModel.actions.append(action1)
-                    songTextModel.actions.append(action2)
+                    realm.add(songTextModel)
                 }
-                //上記の処理ができたときにprintして確認している
-                print("保存されたアクション: mark1: \(action1.mark), name1: \(action1.name), mark2: \(action2.mark), name2: \(action2.name)")
             }
+            try! realm.write {
+                songTextModel.actions.append(action1)
+                songTextModel.actions.append(action2)
+            }
+            //上記の処理ができたときにprintして確認している
+            print("保存されたアクション: mark1: \(action1.mark), name1: \(action1.name), mark2: \(action2.mark), name2: \(action2.name)")
         }
     }
-    
-    //アクションデータ読み込み
-    
+    //SavedActionsの呼び出し。保存したアクションデータをviewWillAppearで呼び出している。
     func loadSavedActions() {
+        //realmから呼び出し
         let realm = try! Realm()
-        //realm.objects　読み込む際に必要なrealmメソッド
-        let savedActions = realm.objects(ActionModel.self)
-        // if let 文　条件式(nilでない場合)else{nilの場合}
-        if let firstAction = savedActions.first {
-            actionNameField1.text = firstAction.name
-            actionMarkField1.text = firstAction.mark
-        }
-        if let lastAction = savedActions.last {
-            actionNameField2.text = lastAction.name
-            actionMarkField2.text = lastAction.mark
+        //realm.objects(SongTextModel)ファーストを呼び出し
+        if let existingSongTextModel = realm.objects(SongTextModel.self).first {
+            //if文　条件式(実行されるコード)
+            //保存されたアクションが１つあれば
+            if existingSongTextModel.actions.count > 0 {
+                //１つ目アクション
+                let action1 = existingSongTextModel.actions[0]
+                //その中身
+                actionNameField1.text = action1.name
+                actionMarkField1.text = action1.mark
+            }
+            if existingSongTextModel.actions.count > 1 {
+                let action2 = existingSongTextModel.actions[1]
+                actionNameField2.text = action2.name
+                actionMarkField2.text = action2.mark
+            }
         }
     }
     // カスタムバックボタンが押された時の処理
@@ -255,8 +270,8 @@ class ActionEditViewController: UIViewController,UINavigationControllerDelegate,
         // キーボードを閉じる
         self.view.endEditing(true)
     }
-
 }
+
 extension UIView {
     //ファインド（:見つける）ファーストレスポンダー
     // ビュー階層の中でファーストレスポンダーを探すメソッド

@@ -11,7 +11,8 @@ import RealmSwift
 
 class LyricsViewController: UIViewController, UITextViewDelegate {
     
-    @IBOutlet weak var lyricsTextView: UITextView!
+    @IBOutlet weak var lyricsTextView: UITableView!
+    
     //songTextModel: これは変数の名前です。SongTextModel 型のインスタンスを格納するために使用されます。
     //　!　→ implicitly unwrapped optional :インプリシットリーアンラップトオプショナル(暗黙的にアンラップされたオプショナル) これを使用すると、通常のオプショナルのように値があるかどうかを確認せずに、直接値にアクセスできます。
     //つまり、この変数はnilでないと仮定され、直接値として扱うことができますが、もしnilの場合、実行時エラーが発生します。
@@ -22,15 +23,12 @@ class LyricsViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // songTextModelがnilか確認
-        //これは「オプショナルバインディング」と呼ばれる構文(if let 文とも呼ばれる)で、songTextModel が nil でない場合に、その値を使って処理を行います。
-        //songTextModel が nil でない場合、その値が新しい定数 songTextModel にバインドされ、この定数を使ってif ブロック内の処理が行われます。
-        //もし songTextModel が nil であれば、else ブロックの処理が行われます。
+        //if let 安全にアンラップする構文　{ nilではない } else { nilの場合 }// if let文 オプショナル型から値を安全に取り出すために使用される構文です。これにより、オプショナルの値が存在するときだけ処理を進めることができます。
         if let songTextModel = songTextModel {
             // テキストビューの更新
             updateLyricsTextView()
-            //もし songTextModel が nil だった場合、else ブロックの処理が実行されます。
         } else {
+            //もし songTextModel が nil だった場合、else ブロックの処理が実行されます。
             print("songTextModelがセットされていません。")
             
             //lyricsTextViewのデリゲートとしてこのビューコントローラを設定
@@ -57,7 +55,6 @@ class LyricsViewController: UIViewController, UITextViewDelegate {
         //attributedText:属性文字列
         //NSMutableAttributedString: テキストに属性（例えば色やフォントサイズ）を追加できるクラスです。
         let attributedText = NSMutableAttributedString(string: songTextModel.text)
-        
         //for-in 文は、Swift におけるループ処理の一種で、コレクション（配列や辞書など）やシーケンスの各要素に対して繰り返し処理を行うために使用します。これにより、コレクションの要素を一つ一つ取り出して操作することができます。
         //songTextModel.colorRange に含まれるすべての色範囲について、attributedText に色の属性を設定します。
         //colorRange: songTextModel.colorRange 配列の要素で、テキスト内の色付けする範囲と色を指定します。
@@ -77,12 +74,8 @@ class LyricsViewController: UIViewController, UITextViewDelegate {
             //NSRange(location: sizeRange.startIndex, length: sizeRange.endIndex - sizeRange.startIndex)を使って、sizeRangeのstartIndexからendIndexまでの範囲に対して、決定したフォントサイズを適用します。
             attributedText.addAttribute(.font, value: UIFont.systemFont(ofSize: fontSize), range: NSRange(location: sizeRange.startIndex, length: sizeRange.endIndex - sizeRange.startIndex))
         }
-        
         lyricsTextView.attributedText = attributedText
-        
-        
         // 他のメソッドも必要に応じて songTextModel を Optional として扱うように修正します。
-        
         // サイズの設定
         for sizeRange in songTextModel.sizeRange {
             //フォントサイズを決定する
@@ -138,30 +131,25 @@ class LyricsViewController: UIViewController, UITextViewDelegate {
         
         //sizeToFit は、UIKitのメソッドで、ビューのサイズをそのコンテンツに基づいて自動的に調整するために使用されます。具体的には、ビューがその内部コンテンツを完全に表示できるようにサイズを変更します。
         toolbar.sizeToFit()
-        
         //カラーボタン
         let colorButton = UIBarButtonItem(title: "Color", style: .plain, target: self, action: #selector(changeTextColor))
         //アクションボタン
+        //action:タップされたときに実行するメソッド
         let actionButton = UIBarButtonItem(title: "Action", style: .plain, target: self, action: #selector(insertActionMark1))
-        
         //閉じるボタン
-        let deneButton = UIBarButtonItem(title: "Dene", style: .plain, target: self, action: #selector(insertDeneText))
-        
+        let deneButton = UIBarButtonItem(title: "Dene", style: .plain, target: self, action: #selector(donebutton))
         //スペーサー　ツールバーのボタン間にスペースを追加するためのフレキシブルなスペーサー（spacer）を作成します。これにより、ボタン間の余白が均等に広がります。
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        
         //ツールバーにボタンを追加
         toolbar.items = [colorButton, spacer, actionButton, spacer, deneButton]
         //lyricsTextViewのinputAccessoryViewプロパティにツールバーを設定し、キーボードの上にツールバーが表示されるようにします。
         lyricsTextView.inputAccessoryView = toolbar
     }
     // "Dene"ボタンが押されたときの処理
-    @objc func insertDeneText() {
-        // 現在のカーソル位置に「Dene」というテキストを挿入
-        if let selectedRange = lyricsTextView.selectedTextRange {
-            lyricsTextView.replace(selectedRange, withText: "Dene")
+    @objc func donebutton() {
+        // キーボードを閉じる
+        lyricsTextView.resignFirstResponder()
         }
-    }
     //色を変更するコードをここに記述
     @objc func changeTextColor() {
         //selected　セレクテッド　選択された
@@ -180,66 +168,53 @@ class LyricsViewController: UIViewController, UITextViewDelegate {
             //endIndex: selectedRange.location + selectedRange.length によって、ハイライトの終了位置を設定しています。
             //color: ハイライトの色を"red"（赤色）に設定しています。
             let colorRange = ColorRangeModel()
-            songTextModel.colorRange.append(colorRange)
+            songTextModel.colorRange.append(colorRange)//スレッド 1: 致命的なエラー: 暗黙的に Optional 値をアンラップしているときに予期せず nil が見つかりました　←歌詞画面の色選択押したら出てくるエラー　のちほど取り掛かる
         }
     }
-    //アクションからnilを取り除くメソッド
+    //アクションからnilを取り除いて挿入するメソッド
     @objc func insertActionMark1() {
-        
-        //realmのアクションを受け取る
+        //realmクラスのインスタンス化
         let realm = try! Realm()
-        
-        // SongTextModel のデータを取得
-        let savedActions = realm.objects(SongTextModel.self)
-        
-        //ソングテキストモデルがnilかどうか
-        guard let songTextModel = songTextModel else {
-            //else{nilだった時の処理}
-            print("エラー: songTextModel が nil です。")
-            return
-        }
-        //actions 配列が空でないことを確認して、空の場合に早期リターンしています。
-        //guard文　条件が 満たされていない場合に早期に処理を抜けるために使います。
-        //isEmpty イエス・エンプティ 空かどうかをチェックするプロパティです。
-        //!songTextModel.actions.isEmpty 配列が空ではない
-        guard !songTextModel.actions.isEmpty else {
-            //配列が空
-            print("エラー: actions 配列が空です。")
-            return
-        }
-        //アーカイブヴド　:アーカイブされた
-        //first? 配列の最初の要素を取り出すことができます。要素がない場合は、nil を返します。
-        if let archivedActionMark1 = songTextModel.actions.first?.mark {
-            // 挿入処理
-            // insertText(): このメソッドは、指定されたテキスト（引数として渡された文字列）を現在のカーソル位置に挿入します。テキストビューの内容を変更します。
-            lyricsTextView.insertText(archivedActionMark1)
-            print("アクションマーク1: \(archivedActionMark1)")
+        // SongTextModel を取得 (1つ目の曲データのみ対象にする場合)
+        if let existingSongTextModel = realm.objects(SongTextModel.self).first {
+            // 保存されているアクションが1つ以上ある場合
+            if existingSongTextModel.actions.count > 0 {
+                // 最初のアクションマークを取得
+                let firstActionMark = existingSongTextModel.actions[0].mark
+                // 現在のカーソル位置にアクションマークを挿入
+                if let selectedRange = lyricsTextView.selectedTextRange {
+                    lyricsTextView.replace(selectedRange, withText: firstActionMark)
+                }
+            } else {
+                // アクションが保存されていない場合の処理
+                print("アクションが保存されていません")
+            }
         } else {
-            print("エラー: 最初のアクションに mark が設定されていません。")
+            // SongTextModel が存在しない場合の処理
+            print("SongTextModel が存在しません。")
         }
     }
-    //その後呼び出しする？
-    func loadinsertActionMark1() {
-        //再びrealmで呼び出し
+    //アクションからnilを取り除いて挿入するメソッド
+    @objc func insertActionMark2() {//反映できていないが、リリックビューのレイアウトから変えたい
+        //realmクラスのインスタンス化
         let realm = try! Realm()
-        
-        // SongTextModel のデータを取得
-        let savedActions = realm.objects(SongTextModel.self)
-        
-        // 最初のアクションが存在する場合に処理
-        if let firstAction = savedActions.first?.actions.first {
-            print("最初のアクション名: \(firstAction.name)")
-            print("最初のアクションマーク: \(firstAction.mark)")
+        // SongTextModel を取得 (1つ目の曲データのみ対象にする場合)
+        if let existingSongTextModel = realm.objects(SongTextModel.self).first {
+            // 保存されているアクションが1つ以上ある場合
+            if existingSongTextModel.actions.count > 0 {
+                // 最初のアクションマークを取得
+                let firstActionMark = existingSongTextModel.actions[1].mark
+                // 現在のカーソル位置にアクションマークを挿入
+                if let selectedRange = lyricsTextView.selectedTextRange {
+                    lyricsTextView.replace(selectedRange, withText: firstActionMark)
+                }
+            } else {
+                // アクションが保存されていない場合の処理
+                print("アクションが保存されていません")
+            }
         } else {
-            print("エラー: アクションが見つかりませんでした。")
-        }
-        
-        // 最後のアクションが存在する場合に処理
-        if let lastAction = savedActions.first?.actions.last {
-            print("最後のアクション名: \(lastAction.name)")
-            print("最後のアクションマーク: \(lastAction.mark)")
-        } else {
-            print("エラー: アクションが見つかりませんでした。")
+            // SongTextModel が存在しない場合の処理
+            print("SongTextModel が存在しません。")
         }
     }
 }
