@@ -201,7 +201,7 @@ class ActionEditViewController: UIViewController,UINavigationControllerDelegate,
             action1.mark = actionMarkField1.text ?? ""
             action2.name = actionNameField2.text ?? ""
             action2.mark = actionMarkField2.text ?? ""
-            //レルムの呼び出し
+            //レルムのインスタンス化
             let realm = try! Realm()
             //レルムに書き込み
             try! realm.write {
@@ -209,6 +209,8 @@ class ActionEditViewController: UIViewController,UINavigationControllerDelegate,
                 realm.add(action1)
                 realm.add(action2)
             }
+            //ActionModel のみを保存すると、どの曲（または歌詞）に関連付けられているかがわかりません。
+            //SongTextModel の actions プロパティにアクションを追加することで、曲に関連付けられたアクションを管理します。
             // SongTextModel（クラス？） のインスタンスを取得
             var songTextModel: SongTextModel
             //if let 安全にアンラップする構文 { nilではない } else { nilの場合 } :オプショナル型から値を安全に取り出すために使用される構文です。
